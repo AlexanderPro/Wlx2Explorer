@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <Plugins />
+  <ListerFormHotKeys key1="17" key2="0" key3="81" />
+  <SearchDialogHotKeys key1="17" key2="0" key3="70" />
+  <PrintDialogHotKeys key1="17" key2="0" key3="80" />
+  <ListerForm maximized="True" width="1024" height="768" />
+  <PluginDefaultSettings highVersion="1" lowVersion="50" iniFile="Wlx2Explorer.ini" />
+</Settings>
