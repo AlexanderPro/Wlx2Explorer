@@ -23,7 +23,6 @@ namespace Wlx2Explorer.App_Code.Forms
         private AboutForm _aboutForm;
         private ProgramSettingsForm _settingsForm;
         private Boolean _isProgramStarted;
-        private String _currentDirectory;
 
         public MainForm()
         {
@@ -32,7 +31,7 @@ namespace Wlx2Explorer.App_Code.Forms
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
-            _currentDirectory = Environment.CurrentDirectory;
+            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
             iconSystemTray.Text = AssemblyUtilities.AssemblyTitle;
             
             Start();
@@ -47,7 +46,7 @@ namespace Wlx2Explorer.App_Code.Forms
 
         private void Start()
         {
-            Environment.CurrentDirectory = _currentDirectory;
+            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
             _isProgramStarted = false;
             try
             {
@@ -197,7 +196,7 @@ namespace Wlx2Explorer.App_Code.Forms
 
             if (files.Count != 1) return;
 
-            Environment.CurrentDirectory = _currentDirectory;
+            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
 
             if (_listerForm != null && _listerForm.IsHandleCreated)
             {
@@ -241,7 +240,7 @@ namespace Wlx2Explorer.App_Code.Forms
                 {
                     _settings.AutoStartProgram = AutoStarter.IsAutoStartEnabled(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation);
                 }
-                Environment.CurrentDirectory = _currentDirectory;
+                Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
                 _settingsForm = new ProgramSettingsForm(_settings);
             }
 
