@@ -27,13 +27,13 @@ namespace Wlx2Explorer.App_Code.Forms
         public MainForm()
         {
             InitializeComponent();
-            
+
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
             Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
             iconSystemTray.Text = AssemblyUtilities.AssemblyTitle;
-            
+
             Start();
             ChangeMenuStartStopText();
         }
@@ -263,9 +263,10 @@ namespace Wlx2Explorer.App_Code.Forms
                         AutoStarter.SetAutoStart(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation);
                     }
                     else
-                    {
-                        AutoStarter.UnsetAutoStart(AssemblyUtilities.AssemblyProductName);
-                    }
+                        if (AutoStarter.IsAutoStartEnabled(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation))
+                        {
+                            AutoStarter.UnsetAutoStart(AssemblyUtilities.AssemblyProductName);
+                        }
                     Stop();
                     Start();
                 }
