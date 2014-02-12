@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnUp = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             this.cmbSearchDialogKey1 = new System.Windows.Forms.ComboBox();
             this.tabpPlugin = new System.Windows.Forms.TabPage();
             this.grbPlugins = new System.Windows.Forms.GroupBox();
+            this.btnWincmdIni = new System.Windows.Forms.Button();
             this.grbPluginDefaultSettings = new System.Windows.Forms.GroupBox();
             this.txtIniFile = new System.Windows.Forms.TextBox();
             this.lblIniFile = new System.Windows.Forms.Label();
@@ -76,6 +78,7 @@
             this.txtLowVersion = new System.Windows.Forms.TextBox();
             this.txtHighVersion = new System.Windows.Forms.TextBox();
             this.lblPluginVersion = new System.Windows.Forms.Label();
+            this.toolTipWincmdIni = new System.Windows.Forms.ToolTip(this.components);
             this.pnlPlugins.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPlugin)).BeginInit();
             this.grbListerFormHotKeys.SuspendLayout();
@@ -95,7 +98,7 @@
             this.btnEdit.Location = new System.Drawing.Point(434, 304);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(86, 24);
-            this.btnEdit.TabIndex = 4;
+            this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.EditPluginClick);
@@ -106,7 +109,7 @@
             this.btnUp.Location = new System.Drawing.Point(207, 304);
             this.btnUp.Name = "btnUp";
             this.btnUp.Size = new System.Drawing.Size(37, 24);
-            this.btnUp.TabIndex = 1;
+            this.btnUp.TabIndex = 2;
             this.btnUp.UseVisualStyleBackColor = true;
             this.btnUp.Click += new System.EventHandler(this.UpPluginClick);
             // 
@@ -116,7 +119,7 @@
             this.btnDown.Location = new System.Drawing.Point(164, 304);
             this.btnDown.Name = "btnDown";
             this.btnDown.Size = new System.Drawing.Size(37, 24);
-            this.btnDown.TabIndex = 0;
+            this.btnDown.TabIndex = 1;
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.DownPluginClick);
             // 
@@ -172,7 +175,7 @@
             this.btnDelete.Location = new System.Drawing.Point(342, 304);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(86, 24);
-            this.btnDelete.TabIndex = 3;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.DeletePluginClick);
@@ -182,7 +185,7 @@
             this.btnAdd.Location = new System.Drawing.Point(250, 304);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(86, 24);
-            this.btnAdd.TabIndex = 2;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.AddPluginClick);
@@ -501,6 +504,7 @@
             // 
             // grbPlugins
             // 
+            this.grbPlugins.Controls.Add(this.btnWincmdIni);
             this.grbPlugins.Controls.Add(this.pnlPlugins);
             this.grbPlugins.Controls.Add(this.btnEdit);
             this.grbPlugins.Controls.Add(this.btnDelete);
@@ -513,6 +517,17 @@
             this.grbPlugins.TabIndex = 1;
             this.grbPlugins.TabStop = false;
             this.grbPlugins.Text = "Plugins";
+            // 
+            // btnWincmdIni
+            // 
+            this.btnWincmdIni.Location = new System.Drawing.Point(10, 304);
+            this.btnWincmdIni.Name = "btnWincmdIni";
+            this.btnWincmdIni.Size = new System.Drawing.Size(86, 24);
+            this.btnWincmdIni.TabIndex = 0;
+            this.btnWincmdIni.Text = "Wincmd.ini";
+            this.toolTipWincmdIni.SetToolTip(this.btnWincmdIni, "Loads a list of plugins from TC wincmd.ini file.");
+            this.btnWincmdIni.UseVisualStyleBackColor = true;
+            this.btnWincmdIni.Click += new System.EventHandler(this.BrowseWincmdIniClick);
             // 
             // grbPluginDefaultSettings
             // 
@@ -578,6 +593,12 @@
             this.lblPluginVersion.Size = new System.Drawing.Size(45, 13);
             this.lblPluginVersion.TabIndex = 0;
             this.lblPluginVersion.Text = "Version:";
+            // 
+            // toolTipWincmdIni
+            // 
+            this.toolTipWincmdIni.AutoPopDelay = 10000;
+            this.toolTipWincmdIni.InitialDelay = 500;
+            this.toolTipWincmdIni.ReshowDelay = 100;
             // 
             // ProgramSettingsForm
             // 
@@ -668,5 +689,7 @@
         private System.Windows.Forms.TextBox txtHighVersion;
         private System.Windows.Forms.Label lblPluginVersion;
         private System.Windows.Forms.GroupBox grbPlugins;
+        private System.Windows.Forms.Button btnWincmdIni;
+        private System.Windows.Forms.ToolTip toolTipWincmdIni;
     }
 }

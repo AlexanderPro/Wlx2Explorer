@@ -99,6 +99,53 @@ namespace Wlx2Explorer.App_Code.Forms
             }
         }
 
+        private void BrowseWincmdIniClick(object sender, EventArgs e)
+        {
+            var dialog = new OpenFileDialog()
+            {
+                RestoreDirectory = true,
+                FileName = "wincmd.ini",
+                Filter = "Ini files (*.ini)|*.ini;|All files (*.*)|*.*"
+            };
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                var file = new InitializationFile(dialog.FileName);
+                try
+                {
+                    file.LoadFile();
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to read the file. May be wrong ini file format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                var listerSection = file.GetSection("ListerPlugins");
+                if (listerSection == null)
+                {
+                    MessageBox.Show("This file does not contain [ListerPlugins] section.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (gridViewPlugin.Rows.Count > 0 && 
+                    MessageBox.Show("Do you want to clear the current list of the plugins.", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    gridViewPlugin.Rows.Clear();
+                }
+                foreach (var pair in listerSection)
+                {
+                    var fileName = pair.Value;
+                    if (File.Exists(fileName))
+                    {
+                        var index = gridViewPlugin.Rows.Add();
+                        var row = gridViewPlugin.Rows[index];
+                        row.Cells[0].Value = fileName;
+                        row.Cells[1].Value = String.Join(";", Plugin.GetSupportedExtensions(fileName));
+                        gridViewPlugin.FirstDisplayedScrollingRowIndex = gridViewPlugin.RowCount - 1;
+                        gridViewPlugin.Rows[index].Selected = true;
+                    }
+                }
+            }
+        }
+
         private void AddPluginClick(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog()

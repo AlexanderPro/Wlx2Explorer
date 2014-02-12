@@ -54,6 +54,7 @@
     <Compile Include="App_Code\Common\AutoStarter.cs" />
     <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
     <Compile Include="App_Code\Common\Extensions\WindowExtensions.cs" />
+    <Compile Include="App_Code\Common\InitializationFile.cs" />
     <Compile Include="App_Code\Common\KeyboardHook.cs" />
     <Compile Include="App_Code\Common\ModifierKey.cs" />
     <Compile Include="App_Code\Common\NativeConstants.cs" />
