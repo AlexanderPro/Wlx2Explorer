@@ -204,17 +204,13 @@ namespace Wlx2Explorer.App_Code.Common
         {
             try
             {
-                Plugin plugin = new Plugin(fileName);
-                Boolean pluginLoaded = plugin.LoadModule();
+                var plugin = new Plugin(fileName);
+                var pluginLoaded = plugin.LoadModule();
                 if (!pluginLoaded) return new String[0];
-                String detectString = plugin.IsGetDetectStringFunctionExist ? plugin.GetDetectString() : String.Empty;
-                Regex rg = new Regex("EXT=\\\"(\\w+)\\\"", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-                MatchCollection matches = rg.Matches(detectString);
-                String[] result = new String[matches.Count];
-                for (Int32 i = 0; i < matches.Count; i++)
-                {
-                    result[i] = matches[i].Groups[1].Value;
-                }
+                var detectString = plugin.IsGetDetectStringFunctionExist ? plugin.GetDetectString() : String.Empty;
+                var regExp = new Regex("EXT=\\\"(\\w+)\\\"", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+                var matches = regExp.Matches(detectString);
+                var result = matches.Cast<Match>().Select(m => m.Groups[1].Value).ToArray();
                 plugin.UnloadModule();
                 return result;
             }

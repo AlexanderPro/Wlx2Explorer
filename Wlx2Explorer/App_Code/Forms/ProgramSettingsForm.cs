@@ -51,7 +51,7 @@ namespace Wlx2Explorer.App_Code.Forms
             cmbListerFormKey2.SelectedItem = (ModifierKey)settings.ListerFormKey2;
             cmbListerFormKey3.ValueMember = "Id";
             cmbListerFormKey3.DisplayMember = "Text";
-            cmbListerFormKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => x.GetDisplayName() != null).Select(x => new { Id = (Int32)x, Text = x.GetDisplayName() }).ToList();
+            cmbListerFormKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
             cmbListerFormKey3.SelectedValue = settings.ListerFormKey3;
             cmbSearchDialogKey1.DataSource = Enum.GetValues(typeof(ModifierKey));
             cmbSearchDialogKey1.SelectedItem = (ModifierKey)settings.SearchDialogKey1;
@@ -59,7 +59,7 @@ namespace Wlx2Explorer.App_Code.Forms
             cmbSearchDialogKey2.SelectedItem = (ModifierKey)settings.SearchDialogKey2;
             cmbSearchDialogKey3.ValueMember = "Id";
             cmbSearchDialogKey3.DisplayMember = "Text";
-            cmbSearchDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => x.GetDisplayName() != null).Select(x => new { Id = (Int32)x, Text = x.GetDisplayName() }).ToList();
+            cmbSearchDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
             cmbSearchDialogKey3.SelectedValue = settings.SearchDialogKey3;
             cmbPrintDialogKey1.DataSource = Enum.GetValues(typeof(ModifierKey));
             cmbPrintDialogKey1.SelectedItem = (ModifierKey)settings.PrintDialogKey1;
@@ -67,7 +67,7 @@ namespace Wlx2Explorer.App_Code.Forms
             cmbPrintDialogKey2.SelectedItem = (ModifierKey)settings.PrintDialogKey2;
             cmbPrintDialogKey3.ValueMember = "Id";
             cmbPrintDialogKey3.DisplayMember = "Text";
-            cmbPrintDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => x.GetDisplayName() != null).Select(x => new { Id = (Int32)x, Text = x.GetDisplayName() }).ToList();
+            cmbPrintDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
             cmbPrintDialogKey3.SelectedValue = settings.PrintDialogKey3;
 
             foreach (var plugin in settings.Plugins)

@@ -30,10 +30,7 @@ namespace Wlx2Explorer.App_Code.Common
                     if (fileName.ToLowerInvariant() == "explorer")
                     {
                         Shell32.FolderItems items = ((Shell32.IShellFolderViewDual2)window.Document).SelectedItems();
-                        foreach (Shell32.FolderItem item in items)
-                        {
-                            fileNames.Add(item.Path);
-                        }
+                        fileNames = items.Cast<Shell32.FolderItem>().Select(x => x.Path).ToList();
                     }
                 }
             }
