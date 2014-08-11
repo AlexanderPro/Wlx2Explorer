@@ -65,7 +65,6 @@
     <Compile Include="App_Code\Common\WindowsExplorerUtilities.cs" />
     <Compile Include="App_Code\Configuration\PluginInfo.cs" />
     <Compile Include="App_Code\Configuration\ProgramSettings.cs" />
-    <Compile Include="App_Code\Common\DisplayNameAttribute.cs" />
     <Compile Include="App_Code\Common\EnumExtensions.cs" />
     <Compile Include="App_Code\Forms\AboutForm.cs">
       <SubType>Form</SubType>
@@ -103,12 +102,6 @@
     <Compile Include="App_Code\Forms\ProgramSettingsForm.Designer.cs">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="App_Code\Forms\TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App_Code\Forms\AboutForm.resx">
@@ -128,9 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="App_Code\Forms\ProgramSettingsForm.resx">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
