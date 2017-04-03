@@ -50,76 +50,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\Common\AssemblyUtilities.cs" />
-    <Compile Include="App_Code\Common\AutoStarter.cs" />
-    <Compile Include="App_Code\Common\Extensions\ProcessExtensions.cs" />
-    <Compile Include="App_Code\Common\Extensions\WindowExtensions.cs" />
-    <Compile Include="App_Code\Common\InitializationFile.cs" />
-    <Compile Include="App_Code\Common\KeyboardHook.cs" />
-    <Compile Include="App_Code\Common\ModifierKey.cs" />
-    <Compile Include="App_Code\Common\NativeConstants.cs" />
-    <Compile Include="App_Code\Common\NativeMethods.cs" />
-    <Compile Include="App_Code\Common\NativeTypes.cs" />
-    <Compile Include="App_Code\Common\Plugin.cs" />
-    <Compile Include="App_Code\Common\VirtualKey.cs" />
-    <Compile Include="App_Code\Common\WindowsExplorerUtilities.cs" />
-    <Compile Include="App_Code\Configuration\PluginInfo.cs" />
-    <Compile Include="App_Code\Configuration\ProgramSettings.cs" />
-    <Compile Include="App_Code\Common\EnumExtensions.cs" />
-    <Compile Include="App_Code\Forms\AboutForm.cs">
+    <Compile Include="Code\Common\AssemblyUtilities.cs" />
+    <Compile Include="Code\Common\AutoStarter.cs" />
+    <Compile Include="Code\Common\Extensions\ProcessExtensions.cs" />
+    <Compile Include="Code\Common\Extensions\WindowExtensions.cs" />
+    <Compile Include="Code\Common\InitializationFile.cs" />
+    <Compile Include="Code\Common\KeyboardHook.cs" />
+    <Compile Include="Code\Common\ModifierKey.cs" />
+    <Compile Include="Code\Common\NativeConstants.cs" />
+    <Compile Include="Code\Common\NativeMethods.cs" />
+    <Compile Include="Code\Common\NativeTypes.cs" />
+    <Compile Include="Code\Common\Plugin.cs" />
+    <Compile Include="Code\Common\VirtualKey.cs" />
+    <Compile Include="Code\Common\WindowsExplorerUtilities.cs" />
+    <Compile Include="Code\Configuration\PluginInfo.cs" />
+    <Compile Include="Code\Configuration\ProgramSettings.cs" />
+    <Compile Include="Code\Common\EnumExtensions.cs" />
+    <Compile Include="Code\Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\AboutForm.Designer.cs">
+    <Compile Include="Code\Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\SearchForm.cs">
+    <Compile Include="Code\Forms\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\SearchForm.Designer.cs">
+    <Compile Include="Code\Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\ListerForm.cs">
+    <Compile Include="Code\Forms\ListerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\ListerForm.Designer.cs">
+    <Compile Include="Code\Forms\ListerForm.Designer.cs">
       <DependentUpon>ListerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\MainForm.cs">
+    <Compile Include="Code\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\MainForm.Designer.cs">
+    <Compile Include="Code\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\PluginSettingsForm.cs">
+    <Compile Include="Code\Forms\PluginSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\PluginSettingsForm.Designer.cs">
+    <Compile Include="Code\Forms\PluginSettingsForm.Designer.cs">
       <DependentUpon>PluginSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\Forms\ProgramSettingsForm.cs">
+    <Compile Include="Code\Forms\ProgramSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="App_Code\Forms\ProgramSettingsForm.Designer.cs">
+    <Compile Include="Code\Forms\ProgramSettingsForm.Designer.cs">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="App_Code\Forms\AboutForm.resx">
+    <EmbeddedResource Include="Code\Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\SearchForm.resx">
+    <EmbeddedResource Include="Code\Forms\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\ListerForm.resx">
+    <EmbeddedResource Include="Code\Forms\ListerForm.resx">
       <DependentUpon>ListerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\MainForm.resx">
+    <EmbeddedResource Include="Code\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\PluginSettingsForm.resx">
+    <EmbeddedResource Include="Code\Forms\PluginSettingsForm.resx">
       <DependentUpon>PluginSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="App_Code\Forms\ProgramSettingsForm.resx">
+    <EmbeddedResource Include="Code\Forms\ProgramSettingsForm.resx">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

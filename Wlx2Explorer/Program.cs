@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using System.Diagnostics;
-using Wlx2Explorer.App_Code.Common.Extensions;
-using Wlx2Explorer.App_Code.Forms;
+using Wlx2Explorer.Code.Common.Extensions;
+using Wlx2Explorer.Code.Forms;
 
 namespace Wlx2Explorer
 {
