@@ -21,7 +21,7 @@ namespace Wlx2Explorer.Code.Forms
         {
             InitializeComponent();
 
-            fileName = Path.IsPathRooted(fileName) ? fileName : Path.Combine(AssemblyUtilities.AssemblyDirectory, fileName);
+            fileName = Path.IsPathRooted(fileName) ? fileName : Path.Combine(AssemblyUtils.AssemblyDirectory, fileName);
             txtFileName.Text = fileName;
             txtExtensions.Text = extensions;
         }

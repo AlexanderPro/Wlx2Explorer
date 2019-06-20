@@ -40,9 +40,9 @@ namespace Wlx2Explorer.Code.Forms
             txtHighVersion.Text = settings.PluginHighVersion.ToString();
             txtLowVersion.Text = settings.PluginLowVersion.ToString();
             txtIniFile.Text = settings.PluginIniFile;
-            if (settings.PluginIniFile.StartsWith(AssemblyUtilities.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
+            if (settings.PluginIniFile.StartsWith(AssemblyUtils.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
             {
-                txtIniFile.Text = settings.PluginIniFile.Substring(AssemblyUtilities.AssemblyDirectory.Length).TrimStart('\\');
+                txtIniFile.Text = settings.PluginIniFile.Substring(AssemblyUtils.AssemblyDirectory.Length).TrimStart('\\');
             }
 
             cmbListerFormKey1.DataSource = Enum.GetValues(typeof(ModifierKey));
@@ -73,9 +73,9 @@ namespace Wlx2Explorer.Code.Forms
             foreach (var plugin in settings.Plugins)
             {
                 var fileName = plugin.Path;
-                if (fileName.StartsWith(AssemblyUtilities.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
+                if (fileName.StartsWith(AssemblyUtils.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    fileName = fileName.Substring(AssemblyUtilities.AssemblyDirectory.Length).TrimStart('\\');
+                    fileName = fileName.Substring(AssemblyUtils.AssemblyDirectory.Length).TrimStart('\\');
                 }
                 var index = gridViewPlugin.Rows.Add();
                 var row = gridViewPlugin.Rows[index];
@@ -156,9 +156,9 @@ namespace Wlx2Explorer.Code.Forms
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 var fileName = dialog.FileName;
-                if (fileName.StartsWith(AssemblyUtilities.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
+                if (fileName.StartsWith(AssemblyUtils.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
                 {
-                    fileName = fileName.Substring(AssemblyUtilities.AssemblyDirectory.Length).TrimStart('\\');
+                    fileName = fileName.Substring(AssemblyUtils.AssemblyDirectory.Length).TrimStart('\\');
                 }
                 if (IsGridViewContainFile(fileName))
                 {
@@ -202,9 +202,9 @@ namespace Wlx2Explorer.Code.Forms
                 {
                     var fileName = pluginSettingsForm.FileName;
                     var extensions = pluginSettingsForm.Extensions;
-                    if (fileName.StartsWith(AssemblyUtilities.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
+                    if (fileName.StartsWith(AssemblyUtils.AssemblyDirectory, StringComparison.InvariantCultureIgnoreCase))
                     {
-                        fileName = fileName.Substring(AssemblyUtilities.AssemblyDirectory.Length).TrimStart('\\');
+                        fileName = fileName.Substring(AssemblyUtils.AssemblyDirectory.Length).TrimStart('\\');
                     }
                     row.Cells[0].Value = fileName;
                     row.Cells[1].Value = extensions;

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Wlx2Explorer.Code.Common.Extensions
 {
-    static class WindowExtensions
+    static class WindowUtils
     {
-        public static Boolean IsChildWindow(this IntPtr hwnd, IntPtr parentHwnd)
+        public static Boolean IsChildWindow(IntPtr hwnd, IntPtr parentHwnd)
         {
             Boolean result = false;
             IntPtr currentHwnd = hwnd;

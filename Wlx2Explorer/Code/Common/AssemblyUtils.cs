@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Wlx2Explorer.Code.Common
 {
-    static class AssemblyUtilities
+    static class AssemblyUtils
     {
         public static String AssemblyLocation
         {

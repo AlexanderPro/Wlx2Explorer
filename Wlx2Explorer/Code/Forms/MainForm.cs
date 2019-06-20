@@ -31,8 +31,8 @@ namespace Wlx2Explorer.Code.Forms
             AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
             Application.ThreadException += OnThreadException;
 
-            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
-            iconSystemTray.Text = AssemblyUtilities.AssemblyTitle;
+            Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
+            iconSystemTray.Text = AssemblyUtils.AssemblyTitle;
 
             Start();
             ChangeMenuStartStopText();
@@ -46,7 +46,7 @@ namespace Wlx2Explorer.Code.Forms
 
         private void Start()
         {
-            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
+            Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
             _isProgramStarted = false;
             try
             {
@@ -187,7 +187,7 @@ namespace Wlx2Explorer.Code.Forms
             IList<String> files = new List<String>();
             try
             {
-                files = WindowsExplorerUtilities.GetSelectedFilesFromForegroundExplorerWindow();
+                files = ExplorerUtils.GetSelectedFilesFromForegroundExplorerWindow();
             }
             catch
             {
@@ -196,7 +196,7 @@ namespace Wlx2Explorer.Code.Forms
 
             if (files.Count != 1) return;
 
-            Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
+            Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
 
             if (_listerForm != null && _listerForm.IsHandleCreated)
             {
@@ -238,9 +238,9 @@ namespace Wlx2Explorer.Code.Forms
             {
                 if (_settings != null)
                 {
-                    _settings.AutoStartProgram = AutoStarter.IsAutoStartEnabled(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation);
+                    _settings.AutoStartProgram = AutoStarter.IsAutoStartEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
                 }
-                Environment.CurrentDirectory = AssemblyUtilities.AssemblyDirectory;
+                Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
                 _settingsForm = new ProgramSettingsForm(_settings);
             }
 
@@ -260,12 +260,12 @@ namespace Wlx2Explorer.Code.Forms
                     }
                     if (_settingsForm.Settings.AutoStartProgram)
                     {
-                        AutoStarter.SetAutoStart(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation);
+                        AutoStarter.SetAutoStart(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
                     }
                     else
-                        if (AutoStarter.IsAutoStartEnabled(AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyLocation))
+                        if (AutoStarter.IsAutoStartEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation))
                         {
-                            AutoStarter.UnsetAutoStart(AssemblyUtilities.AssemblyProductName);
+                            AutoStarter.UnsetAutoStart(AssemblyUtils.AssemblyProductName);
                         }
                     Stop();
                     Start();
@@ -311,7 +311,7 @@ namespace Wlx2Explorer.Code.Forms
 
         private void OnThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            MessageBox.Show(e.Exception.ToString(), AssemblyUtilities.AssemblyProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(e.Exception.ToString(), AssemblyUtils.AssemblyProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

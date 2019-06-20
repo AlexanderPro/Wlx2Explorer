@@ -18,10 +18,10 @@ namespace Wlx2Explorer.Code.Forms
         public AboutForm()
         {
             InitializeComponent();
-            Text = "About " + AssemblyUtilities.AssemblyProductName;
-            lblProductName.Text = String.Format("{0} v{1}", AssemblyUtilities.AssemblyProductName, AssemblyUtilities.AssemblyVersion); ;
-            lblProductTitle.Text = AssemblyUtilities.AssemblyTitle;
-            lblCopyright.Text = AssemblyUtilities.AssemblyCopyright + " " + AssemblyUtilities.AssemblyCompany;
+            Text = "About " + AssemblyUtils.AssemblyProductName;
+            lblProductName.Text = String.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyVersion); ;
+            lblProductTitle.Text = AssemblyUtils.AssemblyTitle;
+            lblCopyright.Text = AssemblyUtils.AssemblyCopyright + " " + AssemblyUtils.AssemblyCompany;
             linkUrl.Text = URL;
         }
 

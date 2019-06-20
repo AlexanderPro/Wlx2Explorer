@@ -114,7 +114,7 @@ namespace Wlx2Explorer.Code.Forms
 
         Boolean IMessageFilter.PreFilterMessage(ref Message m)
         {
-            if (m.Msg == NativeConstants.WM_KEYDOWN && m.HWnd.IsChildWindow(Handle))
+            if (m.Msg == NativeConstants.WM_KEYDOWN && WindowUtils.IsChildWindow(m.HWnd, Handle))
             {
                 if (m.WParam.ToInt32() == _settings.SearchDialogKey3)
                 {

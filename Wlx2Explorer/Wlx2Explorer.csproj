@@ -50,10 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Common\AssemblyUtilities.cs" />
+    <Compile Include="Code\Common\AssemblyUtils.cs" />
     <Compile Include="Code\Common\AutoStarter.cs" />
     <Compile Include="Code\Common\Extensions\ProcessExtensions.cs" />
-    <Compile Include="Code\Common\Extensions\WindowExtensions.cs" />
+    <Compile Include="Code\Common\Extensions\WindowUtils.cs" />
     <Compile Include="Code\Common\InitializationFile.cs" />
     <Compile Include="Code\Common\KeyboardHook.cs" />
     <Compile Include="Code\Common\ModifierKey.cs" />
@@ -62,7 +62,7 @@
     <Compile Include="Code\Common\NativeTypes.cs" />
     <Compile Include="Code\Common\Plugin.cs" />
     <Compile Include="Code\Common\VirtualKey.cs" />
-    <Compile Include="Code\Common\WindowsExplorerUtilities.cs" />
+    <Compile Include="Code\Common\ExplorerUtils.cs" />
     <Compile Include="Code\Configuration\PluginInfo.cs" />
     <Compile Include="Code\Configuration\ProgramSettings.cs" />
     <Compile Include="Code\Common\EnumExtensions.cs" />

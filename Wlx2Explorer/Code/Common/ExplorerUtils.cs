@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Wlx2Explorer.Code.Common
 {
-    static class WindowsExplorerUtilities
+    static class ExplorerUtils
     {
         public static IList<String> GetSelectedFilesFromForegroundExplorerWindow()
         {

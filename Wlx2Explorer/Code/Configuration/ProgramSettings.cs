@@ -60,8 +60,8 @@ namespace Wlx2Explorer.Code.Configuration
 
         public static ProgramSettings Read()
         {
-            var fileName = AssemblyUtilities.AssemblyFileNameWithoutExtension + ".xml";
-            fileName = Path.Combine(AssemblyUtilities.AssemblyDirectory, fileName);
+            var fileName = AssemblyUtils.AssemblyFileNameWithoutExtension + ".xml";
+            fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, fileName);
             var settings = Read(fileName);
             return settings;
         }
@@ -94,8 +94,8 @@ namespace Wlx2Explorer.Code.Configuration
 
         public static void Write(ProgramSettings settings)
         {
-            var fileName = AssemblyUtilities.AssemblyFileNameWithoutExtension + ".xml";
-            fileName = Path.Combine(AssemblyUtilities.AssemblyDirectory, fileName);
+            var fileName = AssemblyUtils.AssemblyFileNameWithoutExtension + ".xml";
+            fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, fileName);
             Write(settings, fileName);
         }
 
