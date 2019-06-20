@@ -21,7 +21,7 @@ namespace Wlx2Explorer.Forms
             Text = "About " + AssemblyUtils.AssemblyProductName;
             lblProductName.Text = String.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyVersion); ;
             lblProductTitle.Text = AssemblyUtils.AssemblyTitle;
-            lblCopyright.Text = AssemblyUtils.AssemblyCopyright + " " + AssemblyUtils.AssemblyCompany;
+            lblCopyright.Text = "Copyright © 2014 - " + DateTime.Now.Year;
             linkUrl.Text = URL;
         }
 
