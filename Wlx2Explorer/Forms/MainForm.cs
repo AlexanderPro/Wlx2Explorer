@@ -214,7 +214,8 @@ namespace Wlx2Explorer.Forms
             }
             else
             {
-                _listerForm.Show();
+                var foregroundWindowHandle = NativeMethods.GetForegroundWindow();
+                _listerForm.Show(new Win32WindowWrapper(foregroundWindowHandle));
                 _listerForm.Activate();
             }
         }
