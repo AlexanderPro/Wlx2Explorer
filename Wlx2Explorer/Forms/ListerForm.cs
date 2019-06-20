@@ -19,14 +19,14 @@ namespace Wlx2Explorer.Forms
     {
         private IntPtr _pluginHandle;
         private Plugin _plugin;
-        private String _fileName;
+        private string _fileName;
         private ProgramSettings _settings;
 
-        public ListerForm(ProgramSettings settings, IList<Plugin> plugins, String fileName)
+        public ListerForm(ProgramSettings settings, IList<Plugin> plugins, string fileName)
         {
             InitializeComponent();
 
-            Boolean pluginLoaded = TryToLoadPlugin(settings, plugins, fileName, out _pluginHandle, out _plugin);
+            bool pluginLoaded = TryToLoadPlugin(settings, plugins, fileName, out _pluginHandle, out _plugin);
             if (!pluginLoaded)
             {
                 Close();
@@ -46,7 +46,7 @@ namespace Wlx2Explorer.Forms
         }
 
         [HandleProcessCorruptedStateExceptions]
-        private Boolean TryToLoadPlugin(ProgramSettings settings, IList<Plugin> plugins, String fileName, out IntPtr pluginHandle, out Plugin plugin)
+        private bool TryToLoadPlugin(ProgramSettings settings, IList<Plugin> plugins, string fileName, out IntPtr pluginHandle, out Plugin plugin)
         {
             pluginHandle = IntPtr.Zero;
             plugin = null;
@@ -54,8 +54,8 @@ namespace Wlx2Explorer.Forms
             {
                 try
                 {
-                    PluginInfo pluginInfo = settings.Plugins.FirstOrDefault(x => String.Compare(x.Path, sourcePlugin.ModuleName) == 0);
-                    String extension = Path.GetExtension(fileName).TrimStart('.');
+                    PluginInfo pluginInfo = settings.Plugins.FirstOrDefault(x => string.Compare(x.Path, sourcePlugin.ModuleName) == 0);
+                    string extension = Path.GetExtension(fileName).TrimStart('.');
                     if (pluginInfo.Extensions.Count == 0 || pluginInfo.Extensions.Contains(extension.ToLower()) || pluginInfo.Extensions.Contains(extension.ToUpper()))
                     {
                         pluginHandle = sourcePlugin.LoadPlugin(pnlLister.Handle, fileName);
@@ -112,7 +112,7 @@ namespace Wlx2Explorer.Forms
             NativeMethods.SetWindowPos(_pluginHandle, new IntPtr(0), 0, 0, pnlLister.Width, pnlLister.Height, 0);
         }
 
-        Boolean IMessageFilter.PreFilterMessage(ref Message m)
+        bool IMessageFilter.PreFilterMessage(ref Message m)
         {
             if (m.Msg == NativeConstants.WM_KEYDOWN && WindowUtils.IsChildWindow(m.HWnd, Handle))
             {
@@ -123,13 +123,13 @@ namespace Wlx2Explorer.Forms
 
                     if ((ModifierKey)_settings.SearchDialogKey1 != ModifierKey.None)
                     {
-                        Int32 key1State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey1) & 0x8000;
+                        int key1State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
                     if ((ModifierKey)_settings.SearchDialogKey2 != ModifierKey.None)
                     {
-                        Int32 key2State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey2) & 0x8000;
+                        int key2State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);
                     }
 
@@ -168,13 +168,13 @@ namespace Wlx2Explorer.Forms
 
                     if ((ModifierKey)_settings.PrintDialogKey1 != ModifierKey.None)
                     {
-                        Int32 key1State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey1) & 0x8000;
+                        int key1State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
                     if ((ModifierKey)_settings.PrintDialogKey2 != ModifierKey.None)
                     {
-                        Int32 key2State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey2) & 0x8000;
+                        int key2State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);
                     }
 
@@ -193,9 +193,9 @@ namespace Wlx2Explorer.Forms
                     }
                 }
 
-                if (m.WParam.ToInt32() == (Int32)VirtualKey.VK_F3)
+                if (m.WParam.ToInt32() == (int)VirtualKey.VK_F3)
                 {
-                    if (_plugin.IsSearchTextFunctionExist && !String.IsNullOrEmpty(SearchForm.SearchingText))
+                    if (_plugin.IsSearchTextFunctionExist && !string.IsNullOrEmpty(SearchForm.SearchingText))
                     {
                         var flags = 0;
                         flags |= SearchForm.SearchFromBeginning ? NativeConstants.LCS_FINDFIRST : 0;
@@ -206,7 +206,7 @@ namespace Wlx2Explorer.Forms
                     }
                 }
 
-                if (m.WParam.ToInt32() == (Int32)VirtualKey.VK_ESCAPE)
+                if (m.WParam.ToInt32() == (int)VirtualKey.VK_ESCAPE)
                 {
                     Close();
                 }

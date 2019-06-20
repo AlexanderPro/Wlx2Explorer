@@ -13,13 +13,13 @@ namespace Wlx2Explorer.Forms
 {
     partial class AboutForm : Form
     {
-        private const String URL = "http://illarionov.pro";
+        private const string URL = "http://illarionov.pro";
 
         public AboutForm()
         {
             InitializeComponent();
             Text = "About " + AssemblyUtils.AssemblyProductName;
-            lblProductName.Text = String.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyVersion); ;
+            lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyVersion); ;
             lblProductTitle.Text = AssemblyUtils.AssemblyTitle;
             lblCopyright.Text = "Copyright © 2014 - " + DateTime.Now.Year;
             linkUrl.Text = URL;

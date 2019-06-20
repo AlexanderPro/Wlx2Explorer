@@ -52,7 +52,7 @@ namespace Wlx2Explorer.Forms
             cmbListerFormKey2.SelectedItem = (ModifierKey)settings.ListerFormKey2;
             cmbListerFormKey3.ValueMember = "Id";
             cmbListerFormKey3.DisplayMember = "Text";
-            cmbListerFormKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
+            cmbListerFormKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (int)x, Text = x.GetDescription() }).ToList();
             cmbListerFormKey3.SelectedValue = settings.ListerFormKey3;
             cmbSearchDialogKey1.DataSource = Enum.GetValues(typeof(ModifierKey));
             cmbSearchDialogKey1.SelectedItem = (ModifierKey)settings.SearchDialogKey1;
@@ -60,7 +60,7 @@ namespace Wlx2Explorer.Forms
             cmbSearchDialogKey2.SelectedItem = (ModifierKey)settings.SearchDialogKey2;
             cmbSearchDialogKey3.ValueMember = "Id";
             cmbSearchDialogKey3.DisplayMember = "Text";
-            cmbSearchDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
+            cmbSearchDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (int)x, Text = x.GetDescription() }).ToList();
             cmbSearchDialogKey3.SelectedValue = settings.SearchDialogKey3;
             cmbPrintDialogKey1.DataSource = Enum.GetValues(typeof(ModifierKey));
             cmbPrintDialogKey1.SelectedItem = (ModifierKey)settings.PrintDialogKey1;
@@ -68,7 +68,7 @@ namespace Wlx2Explorer.Forms
             cmbPrintDialogKey2.SelectedItem = (ModifierKey)settings.PrintDialogKey2;
             cmbPrintDialogKey3.ValueMember = "Id";
             cmbPrintDialogKey3.DisplayMember = "Text";
-            cmbPrintDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !String.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (Int32)x, Text = x.GetDescription() }).ToList();
+            cmbPrintDialogKey3.DataSource = ((VirtualKey[])Enum.GetValues(typeof(VirtualKey))).Where(x => !string.IsNullOrEmpty(x.GetDescription())).Select(x => new { Id = (int)x, Text = x.GetDescription() }).ToList();
             cmbPrintDialogKey3.SelectedValue = settings.PrintDialogKey3;
 
             foreach (var plugin in settings.Plugins)
@@ -81,7 +81,7 @@ namespace Wlx2Explorer.Forms
                 var index = gridViewPlugin.Rows.Add();
                 var row = gridViewPlugin.Rows[index];
                 row.Cells[0].Value = fileName;
-                row.Cells[1].Value = String.Join(";", plugin.Extensions.ToArray());
+                row.Cells[1].Value = string.Join(";", plugin.Extensions.ToArray());
             }
             gridViewPlugin.Columns[0].Width = gridViewPlugin.ClientSize.Width - 100;
             gridViewPlugin.Columns[1].Width = 100;
@@ -139,7 +139,7 @@ namespace Wlx2Explorer.Forms
                         var index = gridViewPlugin.Rows.Add();
                         var row = gridViewPlugin.Rows[index];
                         row.Cells[0].Value = fileName;
-                        row.Cells[1].Value = String.Join(";", Plugin.GetSupportedExtensions(fileName));
+                        row.Cells[1].Value = string.Join(";", Plugin.GetSupportedExtensions(fileName));
                         gridViewPlugin.FirstDisplayedScrollingRowIndex = gridViewPlugin.RowCount - 1;
                         gridViewPlugin.Rows[index].Selected = true;
                     }
@@ -169,7 +169,7 @@ namespace Wlx2Explorer.Forms
                 var index = gridViewPlugin.Rows.Add();
                 var row = gridViewPlugin.Rows[index];
                 row.Cells[0].Value = fileName;
-                row.Cells[1].Value = String.Join(";", Plugin.GetSupportedExtensions(fileName));
+                row.Cells[1].Value = string.Join(";", Plugin.GetSupportedExtensions(fileName));
                 gridViewPlugin.FirstDisplayedScrollingRowIndex = gridViewPlugin.RowCount - 1;
                 gridViewPlugin.Rows[index].Selected = true;
             }
@@ -198,7 +198,7 @@ namespace Wlx2Explorer.Forms
             if (gridViewPlugin.SelectedRows.Count > 0)
             {
                 var row = gridViewPlugin.SelectedRows[0];
-                var pluginSettingsForm = new PluginSettingsForm((String)row.Cells[0].Value, (String)row.Cells[1].Value);
+                var pluginSettingsForm = new PluginSettingsForm((string)row.Cells[0].Value, (string)row.Cells[1].Value);
                 if (pluginSettingsForm.ShowDialog() == DialogResult.OK)
                 {
                     var fileName = pluginSettingsForm.FileName;
@@ -250,16 +250,16 @@ namespace Wlx2Explorer.Forms
 
         private void OkClick(object sender, EventArgs e)
         {
-            Int32 listerWidth = 0;
-            Int32 listerHeight = 0;
-            Int32 highVersion = 0;
-            Int32 lowVersion = 0;
-            String iniFile = "";
+            int listerWidth = 0;
+            int listerHeight = 0;
+            int highVersion = 0;
+            int lowVersion = 0;
+            string iniFile = "";
             DialogResult = DialogResult.Cancel;
 
             try
             {
-                listerWidth = Int32.Parse(txtListerWidth.Text);
+                listerWidth = int.Parse(txtListerWidth.Text);
             }
             catch
             {
@@ -269,7 +269,7 @@ namespace Wlx2Explorer.Forms
 
             try
             {
-                listerHeight = Int32.Parse(txtListerHeight.Text);
+                listerHeight = int.Parse(txtListerHeight.Text);
             }
             catch
             {
@@ -279,7 +279,7 @@ namespace Wlx2Explorer.Forms
 
             try
             {
-                highVersion = Int32.Parse(txtHighVersion.Text);
+                highVersion = int.Parse(txtHighVersion.Text);
             }
             catch
             {
@@ -289,7 +289,7 @@ namespace Wlx2Explorer.Forms
 
             try
             {
-                lowVersion = Int32.Parse(txtLowVersion.Text);
+                lowVersion = int.Parse(txtLowVersion.Text);
             }
             catch
             {
@@ -305,7 +305,7 @@ namespace Wlx2Explorer.Forms
             }
             catch
             {
-                var message = String.Format("Failed to create the file \"{0}\"", txtIniFile.Text);
+                var message = string.Format("Failed to create the file \"{0}\"", txtIniFile.Text);
                 MessageBox.Show(message);
                 Close();
             }
@@ -319,21 +319,21 @@ namespace Wlx2Explorer.Forms
                 PluginLowVersion = lowVersion,
                 PluginHighVersion = highVersion,
                 PluginIniFile = txtIniFile.Text,
-                ListerFormKey1 = (Int32)cmbListerFormKey1.SelectedValue,
-                ListerFormKey2 = (Int32)cmbListerFormKey2.SelectedValue,
-                ListerFormKey3 = (Int32)cmbListerFormKey3.SelectedValue,
-                SearchDialogKey1 = (Int32)cmbSearchDialogKey1.SelectedValue,
-                SearchDialogKey2 = (Int32)cmbSearchDialogKey2.SelectedValue,
-                SearchDialogKey3 = (Int32)cmbSearchDialogKey3.SelectedValue,
-                PrintDialogKey1 = (Int32)cmbPrintDialogKey1.SelectedValue,
-                PrintDialogKey2 = (Int32)cmbPrintDialogKey2.SelectedValue,
-                PrintDialogKey3 = (Int32)cmbPrintDialogKey3.SelectedValue
+                ListerFormKey1 = (int)cmbListerFormKey1.SelectedValue,
+                ListerFormKey2 = (int)cmbListerFormKey2.SelectedValue,
+                ListerFormKey3 = (int)cmbListerFormKey3.SelectedValue,
+                SearchDialogKey1 = (int)cmbSearchDialogKey1.SelectedValue,
+                SearchDialogKey2 = (int)cmbSearchDialogKey2.SelectedValue,
+                SearchDialogKey3 = (int)cmbSearchDialogKey3.SelectedValue,
+                PrintDialogKey1 = (int)cmbPrintDialogKey1.SelectedValue,
+                PrintDialogKey2 = (int)cmbPrintDialogKey2.SelectedValue,
+                PrintDialogKey3 = (int)cmbPrintDialogKey3.SelectedValue
             };
 
             foreach (DataGridViewRow row in gridViewPlugin.Rows)
             {
-                var fileName = (String)row.Cells[0].Value;
-                var extensions = ((String)row.Cells[1].Value).Split(';').ToList();
+                var fileName = (string)row.Cells[0].Value;
+                var extensions = ((string)row.Cells[1].Value).Split(';').ToList();
                 var pluginInfo = new PluginInfo(fileName, extensions);
                 Settings.Plugins.Add(pluginInfo);
             }
@@ -356,11 +356,11 @@ namespace Wlx2Explorer.Forms
             }
         }
 
-        private Boolean IsGridViewContainFile(String fileName)
+        private bool IsGridViewContainFile(string fileName)
         {
             foreach (DataGridViewRow row in gridViewPlugin.Rows)
             {
-                if (String.Compare((String)row.Cells[0].Value, fileName, true) == 0) return true;
+                if (string.Compare((string)row.Cells[0].Value, fileName, true) == 0) return true;
             }
             return false;
         }

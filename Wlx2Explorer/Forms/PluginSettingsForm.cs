@@ -13,11 +13,11 @@ namespace Wlx2Explorer.Forms
 {
     partial class PluginSettingsForm : Form
     {
-        public String FileName { get { return txtFileName.Text; } }
+        public string FileName { get { return txtFileName.Text; } }
 
-        public String Extensions { get { return txtExtensions.Text; } }
+        public string Extensions { get { return txtExtensions.Text; } }
 
-        public PluginSettingsForm(String fileName, String extensions)
+        public PluginSettingsForm(string fileName, string extensions)
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace Wlx2Explorer.Forms
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 txtFileName.Text = dialog.FileName;
-                txtExtensions.Text = String.Join(";", Plugin.GetSupportedExtensions(dialog.FileName));
+                txtExtensions.Text = string.Join(";", Plugin.GetSupportedExtensions(dialog.FileName));
             }
         }
 

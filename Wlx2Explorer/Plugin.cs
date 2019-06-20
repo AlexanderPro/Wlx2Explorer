@@ -13,27 +13,27 @@ namespace Wlx2Explorer
         #region Fields.Private
 
         private IntPtr _moduleHandle;
-        private delegate IntPtr LoadPluginDelegate(IntPtr hwndParent, String fileName, Int32 flags);
+        private delegate IntPtr LoadPluginDelegate(IntPtr hwndParent, string fileName, int flags);
         private delegate void UnloadPluginDelegate(IntPtr hwndList);
-        private delegate void GetDetectStringDelegate(StringBuilder detectString, Int32 size);
-        private delegate void NotificationReceivedDelegate(IntPtr hwndList, Int32 message, IntPtr wParam, IntPtr lParam);
+        private delegate void GetDetectStringDelegate(StringBuilder detectString, int size);
+        private delegate void NotificationReceivedDelegate(IntPtr hwndList, int message, IntPtr wParam, IntPtr lParam);
         private delegate void SetDefaultParamsDelegate(ListDefaultParamStruct defaultParams);
-        private delegate Int32 SearchTextDelegate(IntPtr hwndList, String searchString, Int32 flags);
-        private delegate Int32 SearchDialogDelegate(IntPtr hwndList, Int32 flags);
-        private delegate Int32 PrintDelegate(IntPtr hwndList, String fileName, String printerName, Int32 flags, ref Rect margins);
+        private delegate int SearchTextDelegate(IntPtr hwndList, string searchString, int flags);
+        private delegate int SearchDialogDelegate(IntPtr hwndList, int flags);
+        private delegate int PrintDelegate(IntPtr hwndList, string fileName, string printerName, int flags, ref Rect margins);
 
         #endregion
 
 
         #region Properties.Private
 
-        public String ModuleName
+        public string ModuleName
         {
             get;
             private set;
         }
 
-        public Boolean IsLoadPluginFunctionExist
+        public bool IsLoadPluginFunctionExist
         {
             get
             {
@@ -43,7 +43,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsUnloadPluginFunctionExist
+        public bool IsUnloadPluginFunctionExist
         {
             get
             {
@@ -53,7 +53,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsGetDetectStringFunctionExist
+        public bool IsGetDetectStringFunctionExist
         {
             get
             {
@@ -63,7 +63,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsNotificationReceivedFunctionExist
+        public bool IsNotificationReceivedFunctionExist
         {
             get
             {
@@ -73,7 +73,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsSetDefaultParamsFunctionExist
+        public bool IsSetDefaultParamsFunctionExist
         {
             get
             {
@@ -83,7 +83,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsSearchTextFunctionExist
+        public bool IsSearchTextFunctionExist
         {
             get
             {
@@ -93,7 +93,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsSearchDialogFunctionExist
+        public bool IsSearchDialogFunctionExist
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public Boolean IsPrintFunctionExist
+        public bool IsPrintFunctionExist
         {
             get
             {
@@ -119,13 +119,13 @@ namespace Wlx2Explorer
 
         #region Methods.Public
 
-        public Plugin(String moduleName)
+        public Plugin(string moduleName)
         {
             ModuleName = moduleName;
             _moduleHandle = IntPtr.Zero;
         }
 
-        public Boolean LoadModule()
+        public bool LoadModule()
         {
             UnloadModule();
             _moduleHandle = NativeMethods.LoadLibrary(ModuleName);
@@ -133,14 +133,14 @@ namespace Wlx2Explorer
             return result;
         }
 
-        public Boolean UnloadModule()
+        public bool UnloadModule()
         {
             if (_moduleHandle == IntPtr.Zero) return true;
             var result = NativeMethods.FreeLibrary(_moduleHandle);
             return result;
         }
 
-        public IntPtr LoadPlugin(IntPtr hwndParent, String fileName)
+        public IntPtr LoadPlugin(IntPtr hwndParent, string fileName)
         {
             var function = (LoadPluginDelegate)LoadFunction<LoadPluginDelegate>("ListLoad");
             var hwndPlugin = function(hwndParent, fileName, 0);
@@ -153,7 +153,7 @@ namespace Wlx2Explorer
             function(hwndList);
         }
 
-        public String GetDetectString()
+        public string GetDetectString()
         {
             var function = (GetDetectStringDelegate)LoadFunction<GetDetectStringDelegate>("ListGetDetectString");
             var detectString = new StringBuilder(1024 * 10);
@@ -161,13 +161,13 @@ namespace Wlx2Explorer
             return detectString.ToString();
         }
 
-        public void NotificationReceived(IntPtr hwndList, Int32 message, IntPtr wParam, IntPtr lParam)
+        public void NotificationReceived(IntPtr hwndList, int message, IntPtr wParam, IntPtr lParam)
         {
             var function = (NotificationReceivedDelegate)LoadFunction<NotificationReceivedDelegate>("ListNotificationReceived");
             function(hwndList, message, wParam, lParam);
         }
 
-        public void SetDefaultParams(Int32 interfaceVersionLow, Int32 interfaceVersionHigh, String iniFile)
+        public void SetDefaultParams(int interfaceVersionLow, int interfaceVersionHigh, string iniFile)
         {
             var function = (SetDefaultParamsDelegate)LoadFunction<SetDefaultParamsDelegate>("ListSetDefaultParams");
             var defaultParams = new ListDefaultParamStruct();
@@ -178,21 +178,21 @@ namespace Wlx2Explorer
             function(defaultParams);
         }
 
-        public Int32 SearchText(IntPtr hwndList, String searchString, Int32 flags)
+        public int SearchText(IntPtr hwndList, string searchString, int flags)
         {
             var function = (SearchTextDelegate)LoadFunction<SearchTextDelegate>("ListSearchText");
             var result = function(hwndList, searchString, flags);
             return result;
         }
 
-        public Int32 SearchDialog(IntPtr hwndList, Int32 flags)
+        public int SearchDialog(IntPtr hwndList, int flags)
         {
             var function = (SearchDialogDelegate)LoadFunction<SearchDialogDelegate>("ListSearchDialog");
             var result = function(hwndList, flags);
             return result;
         }
 
-        public Int32 Print(IntPtr hwndList, String fileName, String printerName, Int32 flags, ref Rect margins)
+        public int Print(IntPtr hwndList, string fileName, string printerName, int flags, ref Rect margins)
         {
             var function = (PrintDelegate)LoadFunction<PrintDelegate>("ListPrint");
             var result = function(hwndList, fileName, printerName, flags, ref margins);
@@ -200,14 +200,14 @@ namespace Wlx2Explorer
         }
 
         [HandleProcessCorruptedStateExceptions]
-        public static String[] GetSupportedExtensions(String fileName)
+        public static string[] GetSupportedExtensions(string fileName)
         {
             try
             {
                 var plugin = new Plugin(fileName);
                 var pluginLoaded = plugin.LoadModule();
-                if (!pluginLoaded) return new String[0];
-                var detectString = plugin.IsGetDetectStringFunctionExist ? plugin.GetDetectString() : String.Empty;
+                if (!pluginLoaded) return new string[0];
+                var detectString = plugin.IsGetDetectStringFunctionExist ? plugin.GetDetectString() : string.Empty;
                 var regExp = new Regex("EXT=\\\"(\\w+)\\\"", RegexOptions.IgnoreCase | RegexOptions.Compiled);
                 var matches = regExp.Matches(detectString);
                 var result = matches.Cast<Match>().Select(m => m.Groups[1].Value).ToArray();
@@ -216,7 +216,7 @@ namespace Wlx2Explorer
             }
             catch
             {
-                return new String[0];
+                return new string[0];
             }
         }
 
@@ -225,7 +225,7 @@ namespace Wlx2Explorer
 
         #region Methods.Private
 
-        private Delegate LoadFunction<T>(String functionName)
+        private Delegate LoadFunction<T>(string functionName)
         {
             if (_moduleHandle == IntPtr.Zero) throw new Exception("Plugin module is not loaded.");
             var functionAddress = NativeMethods.GetProcAddress(_moduleHandle, functionName);

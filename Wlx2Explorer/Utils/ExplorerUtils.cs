@@ -9,16 +9,16 @@ namespace Wlx2Explorer.Utils
 {
     static class ExplorerUtils
     {
-        public static IList<String> GetSelectedFilesFromForegroundExplorerWindow()
+        public static IList<string> GetSelectedFilesFromForegroundExplorerWindow()
         {
             var hwndForeground = NativeMethods.GetForegroundWindow();
             var selectedFiles = GetSelectedFilesFromWindow(hwndForeground);
             return selectedFiles;
         }
 
-        public static IList<String> GetSelectedFilesFromWindow(IntPtr hwnd)
+        public static IList<string> GetSelectedFilesFromWindow(IntPtr hwnd)
         {
-            var fileNames = new List<String>();
+            var fileNames = new List<string>();
             Type shellAppType = Type.GetTypeFromProgID("Shell.Application");
             Object shellObject = Activator.CreateInstance(shellAppType);
             SHDocVw.ShellWindows shellWindows = (SHDocVw.ShellWindows)shellAppType.InvokeMember("Windows", BindingFlags.InvokeMethod, null, shellObject, new object[] { });

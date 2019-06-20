@@ -11,15 +11,15 @@ namespace Wlx2Explorer.Forms
 {
     partial class SearchForm : Form
     {
-        public static String SearchingText { get; set; }
+        public static string SearchingText { get; set; }
 
-        public static Boolean SearchWholeWordsOnly { get; set; }
+        public static bool SearchWholeWordsOnly { get; set; }
 
-        public static Boolean SearchCaseSensitive { get; set; }
+        public static bool SearchCaseSensitive { get; set; }
 
-        public static Boolean SearchFromBeginning { get; set; }
+        public static bool SearchFromBeginning { get; set; }
 
-        public static Boolean SearchBackwards { get; set; }
+        public static bool SearchBackwards { get; set; }
 
         static SearchForm()
         {

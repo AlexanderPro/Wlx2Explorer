@@ -7,9 +7,9 @@ namespace Wlx2Explorer.Utils
 {
     static class WindowUtils
     {
-        public static Boolean IsChildWindow(IntPtr hwnd, IntPtr parentHwnd)
+        public static bool IsChildWindow(IntPtr hwnd, IntPtr parentHwnd)
         {
-            Boolean result = false;
+            bool result = false;
             IntPtr currentHwnd = hwnd;
             for ( ; ; )
             {

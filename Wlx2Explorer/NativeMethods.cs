@@ -9,39 +9,39 @@ namespace Wlx2Explorer
     class NativeMethods
     {
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr LoadLibrary(String fileName);
+        public static extern IntPtr LoadLibrary(string fileName);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-        public static extern Boolean FreeLibrary(IntPtr hModule);
+        public static extern bool FreeLibrary(IntPtr hModule);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Ansi)]
-        public static extern IntPtr GetProcAddress(IntPtr hModule, String procName);
+        public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern Boolean DestroyWindow(IntPtr hwnd);
+        public static extern bool DestroyWindow(IntPtr hwnd);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern Boolean SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, Int32 x, Int32 y, Int32 cx, Int32 cy, UInt32 flags);
+        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int cx, int cy, UInt32 flags);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr SetWindowsHookEx(Int32 idHook, KeyboardHookProc callback, IntPtr hInstance, UInt32 threadId);
+        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hInstance, UInt32 threadId);
 
         [DllImport("user32.dll")]
-        public static extern Boolean UnhookWindowsHookEx(IntPtr handleHook);
+        public static extern bool UnhookWindowsHookEx(IntPtr handleHook);
 
         [DllImport("user32.dll")]
-        public static extern Int32 CallNextHookEx(IntPtr handleHook, Int32 nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+        public static extern int CallNextHookEx(IntPtr handleHook, int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 
         [DllImport("user32.dll")]
-        public static extern Int32 GetAsyncKeyState(Int32 key);
+        public static extern int GetAsyncKeyState(int key);
 
         [DllImport("user32.dll")]
-        public static extern IntPtr GetThreadDesktop(Int32 threadId);
+        public static extern IntPtr GetThreadDesktop(int threadId);
 
         [DllImport("user32.dll")]
         public static extern IntPtr SetFocus(IntPtr hwnd);
@@ -50,7 +50,7 @@ namespace Wlx2Explorer
         public static extern IntPtr GetParent(IntPtr hwnd);
 
         [DllImport("kernel32.dll")]
-        public static extern IntPtr GetModuleHandle(String name);
+        public static extern IntPtr GetModuleHandle(string name);
 
         [DllImport("kernel32.dll")]
         public static extern UInt32 GetCurrentThreadId();

@@ -12,13 +12,13 @@ namespace Wlx2Explorer
     {
         private IntPtr _hookHandle;
         private KeyboardHookProc _hookProc;
-        private Int32 _key1;
-        private Int32 _key2;
-        private Int32 _key3;
+        private int _key1;
+        private int _key2;
+        private int _key3;
 
         public event EventHandler<EventArgs> Hooked;
 
-        public Boolean Start(Int32 key1, Int32 key2, Int32 key3)
+        public bool Start(int key1, int key2, int key3)
         {
             _key1 = key1;
             _key2 = key2;
@@ -30,14 +30,14 @@ namespace Wlx2Explorer
             return hookStarted;
         }
 
-        public Boolean Stop()
+        public bool Stop()
         {
             if (_hookHandle == IntPtr.Zero) return true;
             var hookStoped = NativeMethods.UnhookWindowsHookEx(_hookHandle);
             return hookStoped;
         }
 
-        private Int32 HookProc(Int32 code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam)
+        private int HookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam)
         {
             if (code == NativeConstants.HC_ACTION)
             {
@@ -46,13 +46,13 @@ namespace Wlx2Explorer
                     var key1 = true;
                     var key2 = true;
 
-                    if (_key1 != (Int32)ModifierKey.None)
+                    if (_key1 != (int)ModifierKey.None)
                     {
                         var key1State = NativeMethods.GetAsyncKeyState(_key1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
-                    if (_key2 != (Int32)ModifierKey.None)
+                    if (_key2 != (int)ModifierKey.None)
                     {
                         var key2State = NativeMethods.GetAsyncKeyState(_key2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);

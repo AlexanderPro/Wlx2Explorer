@@ -7,15 +7,15 @@ namespace Wlx2Explorer.Configuration
 {
     class PluginInfo
     {
-        public String Path { get; set; }
+        public string Path { get; set; }
 
-        public IList<String> Extensions { get; set; }
+        public IList<string> Extensions { get; set; }
 
-        public PluginInfo() : this("", new List<String>())
+        public PluginInfo() : this("", new List<string>())
         {
         }
 
-        public PluginInfo(String path, IList<String> extensions)
+        public PluginInfo(string path, IList<string> extensions)
         {
             Path = path;
             Extensions = extensions;

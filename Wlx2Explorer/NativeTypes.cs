@@ -9,33 +9,33 @@ namespace Wlx2Explorer
     [StructLayout(LayoutKind.Sequential)]
     struct KBDLLHOOKSTRUCT
     {
-        public Int32 vkCode;
-        public Int32 scanCode;
-        public Int32 flags;
-        public Int32 time;
+        public int vkCode;
+        public int scanCode;
+        public int flags;
+        public int time;
         public IntPtr dwExtraInfo;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     class ListDefaultParamStruct
     {
-        public Int32 size;
-        public Int32 interfaceVersionLow;
-        public Int32 interfaceVersionHigh;
+        public int size;
+        public int interfaceVersionLow;
+        public int interfaceVersionHigh;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
-        public String defaultIniFile;
+        public string defaultIniFile;
     }
 
     [StructLayout(LayoutKind.Sequential)]
     class Rect
     {
-        public Int32 Left;
-        public Int32 Top;
-        public Int32 Right;
-        public Int32 Bottom;
-        public Int32 Width { get { return Right - Left; } }
-        public Int32 Height { get { return Bottom - Top; } }
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+        public int Width { get { return Right - Left; } }
+        public int Height { get { return Bottom - Top; } }
     }
 
-    delegate Int32 KeyboardHookProc(Int32 code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
+    delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 }

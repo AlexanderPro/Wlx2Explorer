@@ -22,7 +22,7 @@ namespace Wlx2Explorer.Forms
         private ListerForm _listerForm;
         private AboutForm _aboutForm;
         private ProgramSettingsForm _settingsForm;
-        private Boolean _isProgramStarted;
+        private bool _isProgramStarted;
 
         public MainForm()
         {
@@ -72,7 +72,7 @@ namespace Wlx2Explorer.Forms
                 }
                 catch
                 {
-                    var message = String.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
+                    var message = string.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -117,12 +117,12 @@ namespace Wlx2Explorer.Forms
                 else
                     if (!pluginLoaded)
                     {
-                        var message = String.Format("Failed to load the plugin {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
+                        var message = string.Format("Failed to load the plugin {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        var message = String.Format("Failed to initialize the plugin with default settings {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
+                        var message = string.Format("Failed to initialize the plugin with default settings {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
                         MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
@@ -133,7 +133,7 @@ namespace Wlx2Explorer.Forms
                 _keyboardKook.Stop();
                 _keyboardKook.Hooked -= KeyHooked;
                 _keyboardKook.Hooked += KeyHooked;
-                Boolean result = _keyboardKook.Start(_settings.ListerFormKey1, _settings.ListerFormKey2, _settings.ListerFormKey3);
+                bool result = _keyboardKook.Start(_settings.ListerFormKey1, _settings.ListerFormKey2, _settings.ListerFormKey3);
                 if (!result) throw new Exception("Failed to run a keyboard hook.");
                 _isProgramStarted = true;
             }
@@ -159,7 +159,7 @@ namespace Wlx2Explorer.Forms
                 }
                 catch
                 {
-                    var message = String.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
+                    var message = string.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -184,7 +184,7 @@ namespace Wlx2Explorer.Forms
 
         private void ShowListerForm()
         {
-            IList<String> files = new List<String>();
+            IList<string> files = new List<string>();
             try
             {
                 files = ExplorerUtils.GetSelectedFilesFromForegroundExplorerWindow();

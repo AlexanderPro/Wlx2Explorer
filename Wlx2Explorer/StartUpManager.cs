@@ -9,9 +9,9 @@ namespace Wlx2Explorer
 {
     static class StartUpManager
     {
-        private const String RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
+        private const string RUN_LOCATION = @"Software\Microsoft\Windows\CurrentVersion\Run";
 
-        public static void AddToStartup(String keyName, String assemblyLocation)
+        public static void AddToStartup(string keyName, string assemblyLocation)
         {
             using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION, true))
             {
@@ -19,7 +19,7 @@ namespace Wlx2Explorer
             }
         }
 
-        public static void RemoveFromStartup(String keyName)
+        public static void RemoveFromStartup(string keyName)
         {
             using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION, true))
             {
@@ -27,13 +27,13 @@ namespace Wlx2Explorer
             }
         }
 
-        public static Boolean IsInStartup(String keyName, String assemblyLocation)
+        public static bool IsInStartup(string keyName, string assemblyLocation)
         {
             using (var key = Registry.CurrentUser.OpenSubKey(RUN_LOCATION, true))
             {
                 if (key == null) return false;
-                var value = (String)key.GetValue(keyName);
-                if (String.IsNullOrEmpty(value)) return false;
+                var value = (string)key.GetValue(keyName);
+                if (string.IsNullOrEmpty(value)) return false;
                 var result = (value == assemblyLocation);
                 return result;
             }
