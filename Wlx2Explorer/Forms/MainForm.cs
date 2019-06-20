@@ -238,7 +238,7 @@ namespace Wlx2Explorer.Forms
             {
                 if (_settings != null)
                 {
-                    _settings.AutoStartProgram = AutoStarter.IsAutoStartEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
+                    _settings.AutoStartProgram = StartUpManager.IsInStartup(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
                 }
                 Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
                 _settingsForm = new ProgramSettingsForm(_settings);
@@ -260,12 +260,12 @@ namespace Wlx2Explorer.Forms
                     }
                     if (_settingsForm.Settings.AutoStartProgram)
                     {
-                        AutoStarter.SetAutoStart(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
+                        StartUpManager.AddToStartup(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation);
                     }
                     else
-                        if (AutoStarter.IsAutoStartEnabled(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation))
+                        if (StartUpManager.IsInStartup(AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyLocation))
                         {
-                            AutoStarter.UnsetAutoStart(AssemblyUtils.AssemblyProductName);
+                            StartUpManager.RemoveFromStartup(AssemblyUtils.AssemblyProductName);
                         }
                     Stop();
                     Start();

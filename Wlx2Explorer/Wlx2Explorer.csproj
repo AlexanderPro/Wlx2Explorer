@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Utils\AssemblyUtils.cs" />
-    <Compile Include="AutoStarter.cs" />
+    <Compile Include="StartUpManager.cs" />
     <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="InitializationFile.cs" />
