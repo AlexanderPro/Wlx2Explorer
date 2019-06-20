@@ -50,76 +50,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Common\AssemblyUtils.cs" />
-    <Compile Include="Code\Common\AutoStarter.cs" />
-    <Compile Include="Code\Common\Extensions\ProcessExtensions.cs" />
-    <Compile Include="Code\Common\Extensions\WindowUtils.cs" />
-    <Compile Include="Code\Common\InitializationFile.cs" />
-    <Compile Include="Code\Common\KeyboardHook.cs" />
-    <Compile Include="Code\Common\ModifierKey.cs" />
-    <Compile Include="Code\Common\NativeConstants.cs" />
-    <Compile Include="Code\Common\NativeMethods.cs" />
-    <Compile Include="Code\Common\NativeTypes.cs" />
-    <Compile Include="Code\Common\Plugin.cs" />
-    <Compile Include="Code\Common\VirtualKey.cs" />
-    <Compile Include="Code\Common\ExplorerUtils.cs" />
-    <Compile Include="Code\Configuration\PluginInfo.cs" />
-    <Compile Include="Code\Configuration\ProgramSettings.cs" />
-    <Compile Include="Code\Common\EnumExtensions.cs" />
-    <Compile Include="Code\Forms\AboutForm.cs">
+    <Compile Include="Utils\AssemblyUtils.cs" />
+    <Compile Include="AutoStarter.cs" />
+    <Compile Include="Extensions\ProcessExtensions.cs" />
+    <Compile Include="Utils\WindowUtils.cs" />
+    <Compile Include="InitializationFile.cs" />
+    <Compile Include="KeyboardHook.cs" />
+    <Compile Include="ModifierKey.cs" />
+    <Compile Include="NativeConstants.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="NativeTypes.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="VirtualKey.cs" />
+    <Compile Include="Utils\ExplorerUtils.cs" />
+    <Compile Include="Configuration\PluginInfo.cs" />
+    <Compile Include="Configuration\ProgramSettings.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Forms\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\AboutForm.Designer.cs">
+    <Compile Include="Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Forms\SearchForm.cs">
+    <Compile Include="Forms\SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\SearchForm.Designer.cs">
+    <Compile Include="Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Forms\ListerForm.cs">
+    <Compile Include="Forms\ListerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\ListerForm.Designer.cs">
+    <Compile Include="Forms\ListerForm.Designer.cs">
       <DependentUpon>ListerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Forms\MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Forms\PluginSettingsForm.cs">
+    <Compile Include="Forms\PluginSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\PluginSettingsForm.Designer.cs">
+    <Compile Include="Forms\PluginSettingsForm.Designer.cs">
       <DependentUpon>PluginSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Code\Forms\ProgramSettingsForm.cs">
+    <Compile Include="Forms\ProgramSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Code\Forms\ProgramSettingsForm.Designer.cs">
+    <Compile Include="Forms\ProgramSettingsForm.Designer.cs">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Code\Forms\AboutForm.resx">
+    <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Forms\SearchForm.resx">
+    <EmbeddedResource Include="Forms\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Forms\ListerForm.resx">
+    <EmbeddedResource Include="Forms\ListerForm.resx">
       <DependentUpon>ListerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Forms\MainForm.resx">
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Forms\PluginSettingsForm.resx">
+    <EmbeddedResource Include="Forms\PluginSettingsForm.resx">
       <DependentUpon>PluginSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Code\Forms\ProgramSettingsForm.resx">
+    <EmbeddedResource Include="Forms\ProgramSettingsForm.resx">
       <DependentUpon>ProgramSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -178,6 +178,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(DevEnvDir)..\tools\vsvars32.bat"
