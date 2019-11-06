@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Program_16.ico</ApplicationIcon>
+    <ApplicationIcon>Wlx2Explorer.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,7 +62,6 @@
     <Compile Include="NativeTypes.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="VirtualKey.cs" />
-    <Compile Include="Utils\ExplorerUtils.cs" />
     <Compile Include="Configuration\PluginInfo.cs" />
     <Compile Include="Configuration\ProgramSettings.cs" />
     <Compile Include="Extensions\EnumExtensions.cs" />
@@ -169,12 +168,11 @@
   <ItemGroup>
     <None Include="Images\Stop.png" />
     <None Include="Images\Start.png" />
-    <None Include="Images\About.png" />
+    <None Include="Images\Wlx2Explorer.png" />
     <None Include="Images\Down.png" />
     <None Include="Images\Up.png" />
-    <Content Include="Images\Program_16.ico" />
-    <Content Include="Images\Program_48.ico" />
-    <Content Include="Program_16.ico" />
+    <Content Include="Images\Wlx2Explorer.ico" />
+    <Content Include="Wlx2Explorer.ico" />
     <Content Include="Wlx2Explorer.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -182,7 +180,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "$(DevEnvDir)..\tools\vsvars32.bat"
+    <PostBuildEvent>call "$(DevEnvDir)..\tools\vsdevcmd.bat"
 editbin.exe /NXCOMPAT:NO "$(TargetPath)"
 </PostBuildEvent>
   </PropertyGroup>

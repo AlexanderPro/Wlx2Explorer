@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
+﻿using System.Reflection;
 using System.IO;
 
 namespace Wlx2Explorer.Utils
@@ -13,7 +9,7 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                string location = Assembly.GetExecutingAssembly().Location;
+                var location = Assembly.GetExecutingAssembly().Location;
                 return location;
             }
         }
@@ -22,7 +18,7 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                string directory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                 return directory;
             }
         }
@@ -31,7 +27,7 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                string directory = System.IO.Path.GetFileName(Assembly.GetExecutingAssembly().Location);
+                var directory = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
                 return directory;
             }
         }
@@ -40,7 +36,7 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                string directory = System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location);
+                var directory = Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().Location);
                 return directory;
             }
         }
@@ -49,12 +45,12 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return string.Empty;
                 }
-                string title = ((AssemblyTitleAttribute)attributes[0]).Title;
+                var title = ((AssemblyTitleAttribute)attributes[0]).Title;
                 return title;
             }
         }
@@ -63,12 +59,12 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return string.Empty;
                 }
-                string productName = ((AssemblyProductAttribute)attributes[0]).Product;
+                var productName = ((AssemblyProductAttribute)attributes[0]).Product;
                 return productName;
             }
         }
@@ -77,12 +73,12 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return string.Empty;
                 }
-                string copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                var copyright = ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
                 return copyright;
             }
         }
@@ -91,12 +87,12 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                Object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return string.Empty;
                 }
-                string company = ((AssemblyCompanyAttribute)attributes[0]).Company;
+                var company = ((AssemblyCompanyAttribute)attributes[0]).Company;
                 return company;
             }
         }
@@ -105,16 +101,16 @@ namespace Wlx2Explorer.Utils
         {
             get
             {
-                string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
                 return version;
             }
         }
 
         public static void ExtractFileFromAssembly(string resourceName, string path)
         {
-            Assembly currentAssembly = Assembly.GetExecutingAssembly();
-            FileStream outputFileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            Stream resouceStream = currentAssembly.GetManifestResourceStream(resourceName);
+            var currentAssembly = Assembly.GetExecutingAssembly();
+            var outputFileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            var resouceStream = currentAssembly.GetManifestResourceStream(resourceName);
             resouceStream.CopyTo(outputFileStream);
             resouceStream.Close();
             outputFileStream.Close();

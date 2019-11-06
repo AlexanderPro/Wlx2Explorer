@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 
 namespace Wlx2Explorer
@@ -26,10 +23,10 @@ namespace Wlx2Explorer
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int cx, int cy, UInt32 flags);
+        public static extern bool SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int x, int y, int cx, int cy, uint flags);
 
         [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hInstance, UInt32 threadId);
+        public static extern IntPtr SetWindowsHookEx(int idHook, KeyboardHookProc callback, IntPtr hInstance, uint threadId);
 
         [DllImport("user32.dll")]
         public static extern bool UnhookWindowsHookEx(IntPtr handleHook);
@@ -53,6 +50,6 @@ namespace Wlx2Explorer
         public static extern IntPtr GetModuleHandle(string name);
 
         [DllImport("kernel32.dll")]
-        public static extern UInt32 GetCurrentThreadId();
+        public static extern uint GetCurrentThreadId();
     }
 }

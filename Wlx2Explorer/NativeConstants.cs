@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Wlx2Explorer
+﻿namespace Wlx2Explorer
 {
     static class NativeConstants
     {
@@ -13,7 +8,8 @@ namespace Wlx2Explorer
         public const int WM_DRAWITEM = 0x002B;
         public const int WM_KEYDOWN = 0x0100;
         public const int WH_KEYBOARD_LL = 0x0D;
-        public const UInt32 HC_ACTION = 0;
+
+        public const uint HC_ACTION = 0;
 
         public const int LCS_FINDFIRST = 0x01;
         public const int LCS_MATCHCASE = 0x02;

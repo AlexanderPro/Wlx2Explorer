@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Wlx2Explorer
+﻿namespace Wlx2Explorer
 {
     enum ModifierKey : int
     {

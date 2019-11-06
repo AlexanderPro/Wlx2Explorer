@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 
 namespace Wlx2Explorer.Extensions
@@ -14,10 +11,10 @@ namespace Wlx2Explorer.Extensions
             {
                 if (currentProcess.Id != process.Id)
                 {
-                    int processThreadId = process.GetMainThreadId();
-                    int currentProcessThreadId = currentProcess.GetMainThreadId();
-                    IntPtr processDesktop = NativeMethods.GetThreadDesktop(processThreadId);
-                    IntPtr currentProcessDesktop = NativeMethods.GetThreadDesktop(currentProcessThreadId);
+                    var processThreadId = process.GetMainThreadId();
+                    var currentProcessThreadId = currentProcess.GetMainThreadId();
+                    var processDesktop = NativeMethods.GetThreadDesktop(processThreadId);
+                    var currentProcessDesktop = NativeMethods.GetThreadDesktop(currentProcessThreadId);
                     if (currentProcessDesktop == processDesktop) return true;
                 }
             }
@@ -26,8 +23,8 @@ namespace Wlx2Explorer.Extensions
 
         public static int GetMainThreadId(this Process currentProcess)
         {
-            int mainThreadId = -1;
-            DateTime startTime = DateTime.MaxValue;
+            var mainThreadId = -1;
+            var startTime = DateTime.MaxValue;
             foreach (ProcessThread thread in currentProcess.Threads)
             {
                 if (thread.StartTime < startTime)
