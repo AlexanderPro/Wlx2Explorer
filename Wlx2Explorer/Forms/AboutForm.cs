@@ -7,13 +7,13 @@ namespace Wlx2Explorer.Forms
 {
     partial class AboutForm : Form
     {
-        private const string URL = "http://illarionov.pro";
+        private const string URL = "https://github.com/AlexanderPro/Wlx2Explorer";
 
         public AboutForm()
         {
             InitializeComponent();
             Text = "About " + AssemblyUtils.AssemblyProductName;
-            lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyVersion); ;
+            lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion); ;
             lblProductTitle.Text = AssemblyUtils.AssemblyTitle;
             lblCopyright.Text = "Copyright © 2014 - " + DateTime.Now.Year;
             linkUrl.Text = URL;
@@ -31,7 +31,7 @@ namespace Wlx2Explorer.Forms
 
         private void FormKeyDown(object sender, KeyEventArgs e)
         {
-            CloseClick(sender, (EventArgs)e);
+            CloseClick(sender, e);
         }
     }
 }
