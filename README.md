@@ -1,4 +1,4 @@
-Wlx2Explorer
+![Wlx2Explorer](https://user-images.githubusercontent.com/8102586/68294387-17f6b400-00a1-11ea-8222-49e7817d169b.png) Wlx2Explorer
 =============
 
 Wlx2Explorer is an application which allows to use Total Commander lister plugins from Windows Explorer.
