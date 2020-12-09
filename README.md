@@ -4,6 +4,11 @@
 Wlx2Explorer is an application which allows to use Total Commander lister plugins from Windows Explorer.
 You open Windows Explorer, select the necessary file and press the hot keys, then you can use the plugin.
 
+Screenshot
+------------------
+
+![alt tag](https://user-images.githubusercontent.com/8102586/101646453-9eba5500-3a48-11eb-9442-4ab87d7e3deb.gif)
+
 Requirements
 ------------------
 
