@@ -56,10 +56,10 @@
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="InitializationFile.cs" />
     <Compile Include="KeyboardHook.cs" />
-    <Compile Include="ModifierKey.cs" />
-    <Compile Include="NativeConstants.cs" />
-    <Compile Include="NativeMethods.cs" />
-    <Compile Include="NativeTypes.cs" />
+    <Compile Include="VirtualKeyModifier.cs" />
+    <Compile Include="Native\NativeConstants.cs" />
+    <Compile Include="Native\NativeMethods.cs" />
+    <Compile Include="Native\NativeTypes.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="VirtualKey.cs" />
     <Compile Include="Configuration\PluginInfo.cs" />

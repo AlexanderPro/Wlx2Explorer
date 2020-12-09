@@ -8,6 +8,7 @@ using System.IO;
 using System.Drawing.Printing;
 using Wlx2Explorer.Utils;
 using Wlx2Explorer.Configuration;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer.Forms
 {
@@ -117,13 +118,13 @@ namespace Wlx2Explorer.Forms
                     var key1 = true;
                     var key2 = true;
 
-                    if ((ModifierKey)_settings.SearchDialogKey1 != ModifierKey.None)
+                    if ((VirtualKeyModifier)_settings.SearchDialogKey1 != VirtualKeyModifier.None)
                     {
                         int key1State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
-                    if ((ModifierKey)_settings.SearchDialogKey2 != ModifierKey.None)
+                    if ((VirtualKeyModifier)_settings.SearchDialogKey2 != VirtualKeyModifier.None)
                     {
                         int key2State = NativeMethods.GetAsyncKeyState(_settings.SearchDialogKey2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);
@@ -162,13 +163,13 @@ namespace Wlx2Explorer.Forms
                     var key1 = true;
                     var key2 = true;
 
-                    if ((ModifierKey)_settings.PrintDialogKey1 != ModifierKey.None)
+                    if ((VirtualKeyModifier)_settings.PrintDialogKey1 != VirtualKeyModifier.None)
                     {
                         int key1State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
-                    if ((ModifierKey)_settings.PrintDialogKey2 != ModifierKey.None)
+                    if ((VirtualKeyModifier)_settings.PrintDialogKey2 != VirtualKeyModifier.None)
                     {
                         int key2State = NativeMethods.GetAsyncKeyState(_settings.PrintDialogKey2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);

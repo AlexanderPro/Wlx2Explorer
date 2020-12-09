@@ -1,4 +1,4 @@
-﻿namespace Wlx2Explorer
+﻿namespace Wlx2Explorer.Native
 {
     static class NativeConstants
     {
@@ -7,6 +7,7 @@
         public const int WM_MEASUREITEM = 0x002C;
         public const int WM_DRAWITEM = 0x002B;
         public const int WM_KEYDOWN = 0x0100;
+        public const int WM_SYSKEYDOWN = 0x0104;
         public const int WH_KEYBOARD_LL = 0x0D;
 
         public const uint HC_ACTION = 0;

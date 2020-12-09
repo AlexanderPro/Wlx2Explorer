@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO;
 using System.Reflection;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer.Utils
 {

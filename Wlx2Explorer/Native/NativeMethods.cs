@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Wlx2Explorer
+namespace Wlx2Explorer.Native
 {
     class NativeMethods
     {

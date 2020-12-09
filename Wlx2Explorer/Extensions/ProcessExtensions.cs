@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer.Extensions
 {

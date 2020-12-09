@@ -1,6 +1,6 @@
 ﻿namespace Wlx2Explorer
 {
-    enum ModifierKey : int
+    enum VirtualKeyModifier : int
     {
         None = 0x00,
         Alt = 0x12,

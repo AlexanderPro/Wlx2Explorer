@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer
 {
@@ -36,18 +37,18 @@ namespace Wlx2Explorer
         {
             if (code == NativeConstants.HC_ACTION)
             {
-                if (wParam.ToInt32() == NativeConstants.WM_KEYDOWN)
+                if (wParam.ToInt32() == NativeConstants.WM_KEYDOWN || wParam.ToInt32() == NativeConstants.WM_SYSKEYDOWN)
                 {
                     var key1 = true;
                     var key2 = true;
 
-                    if (_key1 != (int)ModifierKey.None)
+                    if (_key1 != (int)VirtualKeyModifier.None)
                     {
                         var key1State = NativeMethods.GetAsyncKeyState(_key1) & 0x8000;
                         key1 = Convert.ToBoolean(key1State);
                     }
 
-                    if (_key2 != (int)ModifierKey.None)
+                    if (_key2 != (int)VirtualKeyModifier.None)
                     {
                         var key2State = NativeMethods.GetAsyncKeyState(_key2) & 0x8000;
                         key2 = Convert.ToBoolean(key2State);

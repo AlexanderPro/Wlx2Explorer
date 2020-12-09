@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Wlx2Explorer.Utils;
 using Wlx2Explorer.Configuration;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer.Forms
 {

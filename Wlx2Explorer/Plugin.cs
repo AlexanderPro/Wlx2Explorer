@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Runtime.InteropServices;
 using System.Runtime.ExceptionServices;
+using Wlx2Explorer.Native;
 
 namespace Wlx2Explorer
 {
