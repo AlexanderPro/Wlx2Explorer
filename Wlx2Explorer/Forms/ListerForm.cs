@@ -55,7 +55,7 @@ namespace Wlx2Explorer.Forms
                     string extension = Path.GetExtension(fileName).TrimStart('.');
                     if (pluginInfo.Extensions.Count == 0 || pluginInfo.Extensions.Contains(extension.ToLower()) || pluginInfo.Extensions.Contains(extension.ToUpper()))
                     {
-                        pluginHandle = sourcePlugin.LoadPlugin(pnlLister.Handle, fileName);
+                        pluginHandle = sourcePlugin.ListLoad(pnlLister.Handle, fileName);
                     }
                 }
                 catch
@@ -86,9 +86,9 @@ namespace Wlx2Explorer.Forms
 
             try
             {
-                if (_plugin.IsUnloadPluginFunctionExist)
+                if (_plugin.ListCloseWindowExist)
                 {
-                    _plugin.UnloadPlugin(_pluginHandle);
+                    _plugin.ListCloseWindow(_pluginHandle);
                 }
                 else
                 {
@@ -132,14 +132,14 @@ namespace Wlx2Explorer.Forms
 
                     if (key1 && key2)
                     {
-                        if (!_plugin.IsSearchDialogFunctionExist && !_plugin.IsSearchTextFunctionExist)
+                        if (!_plugin.ListSearchDialogExist && !_plugin.ListSearchTextExist)
                         {
                             MessageBox.Show("This plugin does not support text search!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
-                            if (_plugin.IsSearchDialogFunctionExist)
+                            if (_plugin.ListSearchDialogExist)
                             {
-                                _plugin.SearchDialog(_pluginHandle, 0);
+                                _plugin.ListSearchDialog(_pluginHandle, 0);
                             }
                             else
                             {
@@ -152,7 +152,7 @@ namespace Wlx2Explorer.Forms
                                     flags |= SearchForm.SearchCaseSensitive ? NativeConstants.LCS_MATCHCASE : 0;
                                     flags |= SearchForm.SearchWholeWordsOnly ? NativeConstants.LCS_WHOLEWORDS : 0;
                                     flags |= SearchForm.SearchBackwards ? NativeConstants.LCS_BACKWARDS : 0;
-                                    _plugin.SearchText(_pluginHandle, SearchForm.SearchingText, flags);
+                                    _plugin.ListSearchText(_pluginHandle, SearchForm.SearchingText, flags);
                                 }
                             }
                     }
@@ -177,7 +177,7 @@ namespace Wlx2Explorer.Forms
 
                     if (key1 && key2)
                     {
-                        if (!_plugin.IsPrintFunctionExist)
+                        if (!_plugin.ListPrintExist)
                         {
                             MessageBox.Show("This plugin does not support printing!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -185,21 +185,21 @@ namespace Wlx2Explorer.Forms
                         {
                             Rect rectangle = null;
                             PrinterSettings printerSettings = new PrinterSettings();
-                            _plugin.Print(_pluginHandle, _fileName, printerSettings.PrinterName, 0, ref rectangle);
+                            _plugin.ListPrint(_pluginHandle, _fileName, printerSettings.PrinterName, 0, ref rectangle);
                         }
                     }
                 }
 
                 if (m.WParam.ToInt32() == (int)VirtualKey.VK_F3)
                 {
-                    if (_plugin.IsSearchTextFunctionExist && !string.IsNullOrEmpty(SearchForm.SearchingText))
+                    if (_plugin.ListSearchTextExist && !string.IsNullOrEmpty(SearchForm.SearchingText))
                     {
                         var flags = 0;
                         flags |= SearchForm.SearchFromBeginning ? NativeConstants.LCS_FINDFIRST : 0;
                         flags |= SearchForm.SearchCaseSensitive ? NativeConstants.LCS_MATCHCASE : 0;
                         flags |= SearchForm.SearchWholeWordsOnly ? NativeConstants.LCS_WHOLEWORDS : 0;
                         flags |= SearchForm.SearchBackwards ? NativeConstants.LCS_BACKWARDS : 0;
-                        _plugin.SearchText(_pluginHandle, SearchForm.SearchingText, flags);
+                        _plugin.ListSearchText(_pluginHandle, SearchForm.SearchingText, flags);
                     }
                 }
 

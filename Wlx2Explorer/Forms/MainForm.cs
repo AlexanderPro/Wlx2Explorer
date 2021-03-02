@@ -90,13 +90,13 @@ namespace Wlx2Explorer.Forms
 
                 try
                 {
-                    if (plugin.IsSetDefaultParamsFunctionExist)
+                    if (plugin.ListSetDefaultParamsExist)
                     {
                         var pluginExtension = Path.GetExtension(pluginInfo.Path);
                         var pluginIniFile = Path.GetFullPath(pluginInfo.Path).Replace(pluginExtension, ".ini");
                         if (!File.Exists(pluginIniFile))
                         {
-                            plugin.SetDefaultParams(_settings.PluginLowVersion, _settings.PluginHighVersion, _settings.PluginIniFile);
+                            plugin.ListSetDefaultParams(_settings.PluginLowVersion, _settings.PluginHighVersion, _settings.PluginIniFile);
                         }
                     }
                 }
