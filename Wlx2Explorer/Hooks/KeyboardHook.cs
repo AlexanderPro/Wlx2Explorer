@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Wlx2Explorer.Native;
 
-namespace Wlx2Explorer
+namespace Wlx2Explorer.Hooks
 {
     class KeyboardHook
     {

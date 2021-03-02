@@ -1,4 +1,4 @@
-﻿namespace Wlx2Explorer
+﻿namespace Wlx2Explorer.Hooks
 {
     enum VirtualKeyModifier : int
     {

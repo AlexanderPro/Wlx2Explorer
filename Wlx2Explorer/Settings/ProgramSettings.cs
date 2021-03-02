@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using Wlx2Explorer.Utils;
 
-namespace Wlx2Explorer.Configuration
+namespace Wlx2Explorer.Settings
 {
     class ProgramSettings
     {

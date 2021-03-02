@@ -7,8 +7,9 @@ using System.Runtime.ExceptionServices;
 using System.IO;
 using System.Drawing.Printing;
 using Wlx2Explorer.Utils;
-using Wlx2Explorer.Configuration;
+using Wlx2Explorer.Settings;
 using Wlx2Explorer.Native;
+using Wlx2Explorer.Hooks;
 
 namespace Wlx2Explorer.Forms
 {

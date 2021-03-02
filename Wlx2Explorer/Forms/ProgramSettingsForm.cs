@@ -3,9 +3,10 @@ using System.Data;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
-using Wlx2Explorer.Configuration;
+using Wlx2Explorer.Settings;
 using Wlx2Explorer.Utils;
 using Wlx2Explorer.Extensions;
+using Wlx2Explorer.Hooks;
 
 namespace Wlx2Explorer.Forms
 {

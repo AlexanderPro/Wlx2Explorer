@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Wlx2Explorer.Configuration
+namespace Wlx2Explorer.Settings
 {
     class PluginInfo
     {
