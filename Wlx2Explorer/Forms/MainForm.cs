@@ -180,17 +180,16 @@ namespace Wlx2Explorer.Forms
 
         private void ShowListerForm()
         {
-            IList<string> files = new List<string>();
+            var fileName = (string)null;
             try
             {
-                files = WindowUtils.GetSelectedFilesFromForegroundExplorerWindow();
+                fileName = WindowUtils.GetSelectedFileFromDesktopOrExplorer();
             }
-            catch
+            catch (Exception e)
             {
-                MessageBox.Show("Failed to get selected file in windows explorer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Failed to get selected file. " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-            if (files.Count != 1) return;
 
             Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
 
@@ -201,7 +200,7 @@ namespace Wlx2Explorer.Forms
 
             if (_listerForm == null || _listerForm.IsDisposed)
             {
-                _listerForm = new ListerForm(_settings, _plugins, files[0]);
+                _listerForm = new ListerForm(_settings, _plugins, fileName);
             }
 
             if (_listerForm.IsDisposed)
@@ -210,8 +209,16 @@ namespace Wlx2Explorer.Forms
             }
             else
             {
-                var foregroundWindowHandle = NativeMethods.GetForegroundWindow();
-                _listerForm.Show(new Win32WindowWrapper(foregroundWindowHandle));
+                var hwnd = NativeMethods.GetForegroundWindow();
+                var className = WindowUtils.GetClassName(hwnd);
+                if (className == "WorkerW" || className == "Progman")
+                {
+                    _listerForm.Show();
+                }
+                else
+                {
+                    _listerForm.Show(new Win32WindowWrapper(hwnd));
+                }
                 _listerForm.Activate();
             }
         }

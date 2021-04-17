@@ -34,5 +34,22 @@ namespace Wlx2Explorer.Native
         public int Height { get { return Bottom - Top; } }
     }
 
+    struct LVITEM
+    {
+        public int mask;
+        public int iItem;
+        public int iSubItem;
+        public int state;
+        public int stateMask;
+        public IntPtr pszText; // string
+        public int cchTextMax;
+        public int iImage;
+        public IntPtr lParam;
+        public int iIndent;
+        public int iGroupId;
+        public int cColumns;
+        public IntPtr puColumns;
+    }
+
     delegate int KeyboardHookProc(int code, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
 }
