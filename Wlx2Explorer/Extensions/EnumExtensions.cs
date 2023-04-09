@@ -9,8 +9,7 @@ namespace Wlx2Explorer.Extensions
         public static string GetDescription(this Enum value)
         {
             var attribute = value.GetType().GetField(value.ToString()).GetCustomAttributes(typeof(DescriptionAttribute), false).FirstOrDefault() as DescriptionAttribute;
-            var description = attribute == null ? null : attribute.Description;
-            return description;
+            return attribute?.Description;
         }
     }
 }

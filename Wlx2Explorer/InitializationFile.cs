@@ -21,17 +21,9 @@ namespace Wlx2Explorer
             _fileEncoding = encoding;
         }
 
-        public IDictionary<string, string> GetSection(string sectionName)
-        {
-            var section = _content.ContainsKey(sectionName) ? _content[sectionName] : null;
-            return section;
-        }
+        public IDictionary<string, string> GetSection(string sectionName) => _content.ContainsKey(sectionName) ? _content[sectionName] : null;
 
-        public string GetValue(string sectionName, string keyName)
-        {
-            var value = _content.ContainsKey(sectionName) && _content[sectionName].ContainsKey(keyName) ? _content[sectionName][keyName] : null;
-            return value;
-        }
+        public string GetValue(string sectionName, string keyName) => _content.ContainsKey(sectionName) && _content[sectionName].ContainsKey(keyName) ? _content[sectionName][keyName] : null;
 
         public void SetSection(string sectionName, IDictionary<string, string> items)
         {
@@ -47,30 +39,18 @@ namespace Wlx2Explorer
             _content[sectionName][keyName] = value;
         }
 
-        public void LoadFile()
-        {
-            LoadFile(_fileName, _fileEncoding);
-        }
+        public void LoadFile() => LoadFile(_fileName, _fileEncoding);
 
-        public void LoadFile(string fileName)
-        {
-            LoadFile(fileName, _fileEncoding);
-        }
+        public void LoadFile(string fileName) => LoadFile(fileName, _fileEncoding);
 
         public void LoadFile(string fileName, Encoding fileEncoding)
         {
             _content = Load(fileName, fileEncoding);
         }
 
-        public void SaveFile()
-        {
-            SaveFile(_fileName, _fileEncoding);
-        }
+        public void SaveFile() => SaveFile(_fileName, _fileEncoding);
 
-        public void SaveFile(string fileName)
-        {
-            SaveFile(fileName, _fileEncoding);
-        }
+        public void SaveFile(string fileName) => SaveFile(fileName, _fileEncoding);
 
         public void SaveFile(string fileName, Encoding fileEncoding)
         {

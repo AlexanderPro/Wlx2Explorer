@@ -70,7 +70,6 @@
   <ItemGroup>
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="StartUpManager.cs" />
-    <Compile Include="Extensions\ProcessExtensions.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Compile Include="InitializationFile.cs" />
     <Compile Include="Hooks\KeyboardHook.cs" />
