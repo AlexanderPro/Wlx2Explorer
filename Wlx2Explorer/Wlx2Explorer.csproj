@@ -198,6 +198,8 @@
     <None Include="Images\Down.png" />
     <None Include="Images\Up.png" />
     <Content Include="Images\Wlx2Explorer.ico" />
+    <Content Include="Libs\UnRAR.dll" />
+    <Content Include="Libs\UnRAR64.dll" />
     <Content Include="Wlx2Explorer.ico" />
     <Content Include="Wlx2Explorer.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -208,6 +210,7 @@
   <PropertyGroup>
     <PostBuildEvent>call "$(DevEnvDir)..\tools\vsdevcmd.bat"
 editbin.exe /NXCOMPAT:NO "$(TargetPath)"
+copy /Y "$(ProjectDir)Libs\*.dll" "$(TargetDir)"
 </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
