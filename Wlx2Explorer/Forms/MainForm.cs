@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 using Wlx2Explorer.Utils;
 using Wlx2Explorer.Settings;
@@ -23,11 +22,6 @@ namespace Wlx2Explorer.Forms
         public MainForm()
         {
             InitializeComponent();
-
-            AppDomain.CurrentDomain.UnhandledException += OnCurrentDomainUnhandledException;
-            Application.ThreadException += OnThreadException;
-
-            Environment.CurrentDirectory = AssemblyUtils.AssemblyDirectory;
             iconSystemTray.Text = AssemblyUtils.AssemblyTitle;
 
             Start();
@@ -68,7 +62,7 @@ namespace Wlx2Explorer.Forms
                 }
                 catch
                 {
-                    var message = string.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
+                    var message = $@"Failed to unload a plugin ""{plugin.ModuleName}"".";
                     MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -113,13 +107,11 @@ namespace Wlx2Explorer.Forms
                 else
                     if (!pluginLoaded)
                     {
-                        var message = string.Format("Failed to load the plugin {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($@"Failed to load the plugin {Environment.NewLine} ""{pluginInfo.Path}"".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        var message = string.Format("Failed to initialize the plugin with default settings {0} \"{1}\".", Environment.NewLine, pluginInfo.Path);
-                        MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($@"Failed to initialize the plugin with default settings {Environment.NewLine} ""{pluginInfo.Path}"".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
             }
 
@@ -155,8 +147,7 @@ namespace Wlx2Explorer.Forms
                 }
                 catch
                 {
-                    var message = string.Format("Failed to unload a plugin \"{0}\".", plugin.ModuleName);
-                    MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($@"Failed to unload a plugin ""{ plugin.ModuleName}"".", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             _plugins.Clear();
@@ -187,7 +178,7 @@ namespace Wlx2Explorer.Forms
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failed to get selected file. " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to get selected file. {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -296,26 +287,14 @@ namespace Wlx2Explorer.Forms
         {
             if (_isProgramStarted)
             {
-                miStartStop.Image = Wlx2Explorer.Properties.Resources.Stop;
+                miStartStop.Image = Properties.Resources.Stop;
                 miStartStop.Text = "Stop";
             }
             else
             {
-                miStartStop.Image = Wlx2Explorer.Properties.Resources.Start;
+                miStartStop.Image = Properties.Resources.Start;
                 miStartStop.Text = "Start";
             }
-        }
-
-        private void OnCurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            Exception ex = e.ExceptionObject as Exception;
-            ex = ex ?? new Exception("OnCurrentDomainUnhandledException");
-            OnThreadException(sender, new ThreadExceptionEventArgs(ex));
-        }
-
-        private void OnThreadException(object sender, ThreadExceptionEventArgs e)
-        {
-            MessageBox.Show(e.Exception.ToString(), AssemblyUtils.AssemblyProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

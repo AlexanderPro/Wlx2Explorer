@@ -10,8 +10,6 @@ namespace Wlx2Explorer.Settings
 {
     class ProgramSettings
     {
-        #region Properties.Public
-
         public IList<PluginInfo> Plugins { get; set; }
 
         public int ListerFormKey1 { get; set; }
@@ -46,10 +44,6 @@ namespace Wlx2Explorer.Settings
 
         public string PluginIniFile { get; set; }
 
-        #endregion
-
-        
-        #region Methods.Public
 
         public ProgramSettings()
         {
@@ -60,35 +54,31 @@ namespace Wlx2Explorer.Settings
         {
             var fileName = AssemblyUtils.AssemblyFileNameWithoutExtension + ".xml";
             fileName = Path.Combine(AssemblyUtils.AssemblyDirectory, fileName);
-            var settings = Read(fileName);
+            var document = XDocument.Load(fileName);
+            var settings = Read(document);
             return settings;
         }
 
-        public static ProgramSettings Read(string fileName)
+        public static ProgramSettings Read(XDocument document) => new ProgramSettings
         {
-            var document = XDocument.Load(fileName);
-            var settings = new ProgramSettings();
-            settings.ListerFormKey1 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key1").Value);
-            settings.ListerFormKey2 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key2").Value);
-            settings.ListerFormKey3 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key3").Value);
-            settings.SearchDialogKey1 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key1").Value);
-            settings.SearchDialogKey2 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key2").Value);
-            settings.SearchDialogKey3 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key3").Value);
-            settings.PrintDialogKey1 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key1").Value);
-            settings.PrintDialogKey2 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key2").Value);
-            settings.PrintDialogKey3 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key3").Value);
-            settings.ListerFormMaximized = bool.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("maximized").Value);
-            settings.ListerFormWidth = int.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("width").Value);
-            settings.ListerFormHeight = int.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("height").Value);
-            settings.PluginHighVersion = int.Parse(document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("highVersion").Value);
-            settings.PluginLowVersion = int.Parse(document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("lowVersion").Value);
-            settings.PluginIniFile = document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("iniFile").Value;
-            settings.PluginIniFile = new FileInfo(settings.PluginIniFile).FullName;
-            settings.Plugins = document.XPathSelectElements("//Settings/Plugins/Plugin").Select(el => new PluginInfo(el.Attribute("path").Value,
-                                                                                                                     string.IsNullOrWhiteSpace(el.Attribute("extensions").Value) ? new List<string>() :
-                                                                                                                                                                              el.Attribute("extensions").Value.Split(';').ToList())).ToList();
-            return settings;
-        }
+            ListerFormKey1 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key1").Value),
+            ListerFormKey2 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key2").Value),
+            ListerFormKey3 = int.Parse(document.XPathSelectElement("//Settings/ListerFormHotKeys").Attribute("key3").Value),
+            SearchDialogKey1 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key1").Value),
+            SearchDialogKey2 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key2").Value),
+            SearchDialogKey3 = int.Parse(document.XPathSelectElement("//Settings/SearchDialogHotKeys").Attribute("key3").Value),
+            PrintDialogKey1 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key1").Value),
+            PrintDialogKey2 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key2").Value),
+            PrintDialogKey3 = int.Parse(document.XPathSelectElement("//Settings/PrintDialogHotKeys").Attribute("key3").Value),
+            ListerFormMaximized = bool.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("maximized").Value),
+            ListerFormWidth = int.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("width").Value),
+            ListerFormHeight = int.Parse(document.XPathSelectElement("//Settings/ListerForm").Attribute("height").Value),
+            PluginHighVersion = int.Parse(document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("highVersion").Value),
+            PluginLowVersion = int.Parse(document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("lowVersion").Value),
+            PluginIniFile = new FileInfo(document.XPathSelectElement("//Settings/PluginDefaultSettings").Attribute("iniFile").Value).FullName,
+            Plugins = document.XPathSelectElements("//Settings/Plugins/Plugin")
+            .Select(el => new PluginInfo(el.Attribute("path").Value, string.IsNullOrWhiteSpace(el.Attribute("extensions").Value) ? new List<string>() : el.Attribute("extensions").Value.Split(';').ToList())).ToList()
+        };
 
         public static void Write(ProgramSettings settings)
         {
@@ -128,11 +118,6 @@ namespace Wlx2Explorer.Settings
             Save(document, fileName);
         }
 
-        #endregion
-
-
-        #region Methods.Private
-
         private static void Save(XDocument document, string fileName)
         {
             using (TextWriter writer = new Utf8StringWriter())
@@ -146,7 +131,5 @@ namespace Wlx2Explorer.Settings
         {
             public override Encoding Encoding { get { return Encoding.UTF8; } }
         }
-
-        #endregion
     }
 }

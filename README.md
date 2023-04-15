@@ -12,6 +12,18 @@ Screenshot
 ![alt tag](https://user-images.githubusercontent.com/8102586/101646453-9eba5500-3a48-11eb-9442-4ab87d7e3deb.gif)
 ![alt tag](https://user-images.githubusercontent.com/8102586/115141202-b7182d00-a043-11eb-88c0-1e0257337863.gif)
 
+Command Line Interface
+--------------------
+
+```bash
+-h --help             The help
+-f --file             Path to file
+-s --suppressmsg      Suppress messages
+
+Example:
+Wlx2Explorer.exe -s --file "C:\Temp\Image.jpeg"
+```
+
 Requirements
 ------------------
 
