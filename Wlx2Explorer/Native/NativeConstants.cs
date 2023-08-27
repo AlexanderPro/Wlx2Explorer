@@ -1,4 +1,6 @@
-﻿namespace Wlx2Explorer.Native
+﻿using System;
+
+namespace Wlx2Explorer.Native
 {
     static class NativeConstants
     {
@@ -34,5 +36,7 @@
         public const uint PAGE_READWRITE = 4;
         public const int LVIF_TEXT = 0x0001;
         public const uint LVIS_SELECTED = 0x2;
+
+        public static readonly Guid SID_STopLevelBrowser = new Guid(0x4C96BE40, 0x915C, 0x11CF, 0x99, 0xD3, 0x00, 0xAA, 0x00, 0x4A, 0xE8, 0x37);
     }
 }

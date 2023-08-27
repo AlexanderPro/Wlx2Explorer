@@ -5,8 +5,10 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Runtime.InteropServices;
-using IWshRuntimeLibrary;
 using Wlx2Explorer.Native;
+using IWshRuntimeLibrary;
+using SHDocVw;
+using Shell32;
 
 namespace Wlx2Explorer.Utils
 {
@@ -31,19 +33,45 @@ namespace Wlx2Explorer.Utils
 
         private static string GetSelectedFileFromExplorer(IntPtr hwnd)
         {
+            var hwndActiveTab = NativeMethods.FindWindowEx(hwnd, IntPtr.Zero, "ShellTabWindowClass", null);
+            hwndActiveTab = hwndActiveTab != IntPtr.Zero ? hwndActiveTab : NativeMethods.FindWindowEx(hwnd, IntPtr.Zero, "TabWindowClass", null);
+
             var fileNames = new List<string>();
             var shellAppType = Type.GetTypeFromProgID("Shell.Application");
             var shellObject = Activator.CreateInstance(shellAppType);
-            var shellWindows = (SHDocVw.ShellWindows)shellAppType.InvokeMember("Windows", BindingFlags.InvokeMethod, null, shellObject, new object[] { });
-            foreach (SHDocVw.InternetExplorer window in shellWindows)
+            var shellWindows = (IShellWindows)shellAppType.InvokeMember("Windows", BindingFlags.InvokeMethod, null, shellObject, new object[] { });
+            foreach (IWebBrowser2 window in shellWindows)
             {
-                if (window.HWND == hwnd.ToInt32())
+                if (window.HWND != hwnd.ToInt32())
                 {
-                    var fileName = Path.GetFileNameWithoutExtension(window.FullName).ToLower();
-                    if (fileName.ToLowerInvariant() == "explorer")
+                    continue;
+                }
+
+                if (hwndActiveTab != IntPtr.Zero && window is Native.Interfaces.IServiceProvider serviceProvider)
+                {
+                    object shellBrowserObject;
+                    serviceProvider.QueryService(NativeConstants.SID_STopLevelBrowser, typeof(Native.Interfaces.IShellBrowser).GUID, out shellBrowserObject);
+                    var shellBrowser = (Native.Interfaces.IShellBrowser)shellBrowserObject;
+                    var hwndThisTab = IntPtr.Zero;
+                    shellBrowser.GetWindow(out hwndThisTab);
+                    if (hwndThisTab != IntPtr.Zero && hwndActiveTab != hwndThisTab)
                     {
-                        var items = ((Shell32.IShellFolderViewDual2)window.Document).SelectedItems();
-                        fileNames = items.Cast<Shell32.FolderItem>().Select(x => x.Path).ToList();
+                        continue;
+                    }
+                }
+
+                if (window.Document is IShellFolderViewDual2 document2)
+                {
+                    foreach (FolderItem folderItem in document2.SelectedItems())
+                    {
+                        fileNames.Add(folderItem.Path);
+                    }
+                }
+                else if (window.Document is IShellFolderViewDual document)
+                {
+                    foreach (FolderItem folderItem in document.SelectedItems())
+                    {
+                        fileNames.Add(folderItem.Path);
                     }
                 }
             }

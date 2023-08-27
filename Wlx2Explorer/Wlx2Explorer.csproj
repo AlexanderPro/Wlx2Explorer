@@ -74,6 +74,8 @@
     <Compile Include="Forms\MessageBoxForm.Designer.cs">
       <DependentUpon>MessageBoxForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Native\Interfaces\IServiceProvider.cs" />
+    <Compile Include="Native\Interfaces\IShellBrowser.cs" />
     <Compile Include="ToggleParser.cs" />
     <Compile Include="Utils\AssemblyUtils.cs" />
     <Compile Include="StartUpManager.cs" />
