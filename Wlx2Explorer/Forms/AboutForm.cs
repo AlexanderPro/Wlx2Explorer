@@ -12,10 +12,10 @@ namespace Wlx2Explorer.Forms
         public AboutForm()
         {
             InitializeComponent();
-            Text = "About " + AssemblyUtils.AssemblyProductName;
-            lblProductName.Text = string.Format("{0} v{1}", AssemblyUtils.AssemblyProductName, AssemblyUtils.AssemblyProductVersion); ;
+            Text = $"About {AssemblyUtils.AssemblyProductName}";
+            lblProductName.Text = $"{AssemblyUtils.AssemblyProductName} v{AssemblyUtils.AssemblyProductVersion}";
             lblProductTitle.Text = AssemblyUtils.AssemblyTitle;
-            lblCopyright.Text = "Copyright © 2014 - " + DateTime.Now.Year;
+            lblCopyright.Text = $"Copyright © 2014 - {DateTime.Now.Year}";
             linkUrl.Text = URL;
         }
 

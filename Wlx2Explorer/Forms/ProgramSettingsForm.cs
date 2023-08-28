@@ -302,8 +302,7 @@ namespace Wlx2Explorer.Forms
             }
             catch
             {
-                var message = string.Format("Failed to create the file \"{0}\"", txtIniFile.Text);
-                MessageBox.Show(message);
+                MessageBox.Show($"Failed to create the file \"{txtIniFile.Text}\"");
                 Close();
             }
 

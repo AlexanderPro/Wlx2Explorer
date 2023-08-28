@@ -54,11 +54,9 @@ namespace Wlx2Explorer
 
         public void SaveFile(string fileName, Encoding fileEncoding)
         {
-            using (var file = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.Read))
-            using (var writer = new StreamWriter(file, fileEncoding))
-            {
-                writer.Write(ToString());
-            }
+            using var file = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.Read);
+            using var writer = new StreamWriter(file, fileEncoding);
+            writer.Write(ToString());
         }
 
         public override string ToString()
@@ -79,30 +77,28 @@ namespace Wlx2Explorer
         private Dictionary<string, IDictionary<string, string>> Load(string fileName, Encoding fileEncoding)
         {
             var content = new Dictionary<string, IDictionary<string, string>>();
-            using (var file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-            using (var reader = new StreamReader(file, _fileEncoding))
+            using var file = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            using var reader = new StreamReader(file, _fileEncoding);
+            string line = null;
+            string section = null;
+            while ((line = reader.ReadLine()) != null)
             {
-                string line = null;
-                string section = null;
-                while ((line = reader.ReadLine()) != null)
+                if (line.Length == 0) continue;
+                if (line.StartsWith(";")) continue;
+                if (line.Length > 2 && line[0] == '[' && line[line.Length - 1] == ']')
                 {
-                    if (line.Length == 0) continue;
-                    if (line.StartsWith(";")) continue;
-                    if (line.Length > 2 && line[0] == '[' && line[line.Length - 1] == ']')
-                    {
-                        section = line.Substring(1, line.Length - 2);
-                        if (content.ContainsKey(section)) continue;
-                        content[section] = new Dictionary<string, string>();
-                    }
-                    else
-                    {
-                        if (section == null) continue;
-                        var pair = line.Split('=');
-                        if (pair.Length < 2) continue;
-                        var keyValue = new KeyValuePair<string, string>(pair[0], pair[1]);
-                        if (content[section].Contains(keyValue)) continue;
-                        content[section].Add(keyValue);
-                    }
+                    section = line.Substring(1, line.Length - 2);
+                    if (content.ContainsKey(section)) continue;
+                    content[section] = new Dictionary<string, string>();
+                }
+                else
+                {
+                    if (section == null) continue;
+                    var pair = line.Split('=');
+                    if (pair.Length < 2) continue;
+                    var keyValue = new KeyValuePair<string, string>(pair[0], pair[1]);
+                    if (content[section].Contains(keyValue)) continue;
+                    content[section].Add(keyValue);
                 }
             }
             return content;

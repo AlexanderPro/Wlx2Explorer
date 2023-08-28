@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.852
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wlx2Explorer", "Wlx2Explorer\Wlx2Explorer.csproj", "{82A3A166-142C-4C62-8D57-6CF8678402AA}"
 EndProject
@@ -26,7 +26,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BF0AC8CD-EEA6-4627-9260-407C1EA7A175}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {BF0AC8CD-EEA6-4627-9260-407C1EA7A175}
 	EndGlobalSection
 EndGlobal

@@ -120,11 +120,9 @@ namespace Wlx2Explorer.Settings
 
         private static void Save(XDocument document, string fileName)
         {
-            using (TextWriter writer = new Utf8StringWriter())
-            {
-                document.Save(writer, SaveOptions.None);
-                File.WriteAllText(fileName, writer.ToString());
-            }
+            using var writer = new Utf8StringWriter();
+            document.Save(writer, SaveOptions.None);
+            File.WriteAllText(fileName, writer.ToString());
         }
 
         private class Utf8StringWriter : StringWriter

@@ -20,7 +20,9 @@ namespace Wlx2Explorer.Hooks
             _key2 = key2;
             _key3 = key3;
             _hookProc = HookProc;
-            var moduleHandle = NativeMethods.GetModuleHandle(Process.GetCurrentProcess().MainModule.ModuleName);
+            using var currentProcess = Process.GetCurrentProcess();
+            using var currentModule = currentProcess.MainModule;
+            var moduleHandle = NativeMethods.GetModuleHandle(currentModule.ModuleName);
             _hookHandle = NativeMethods.SetWindowsHookEx(NativeConstants.WH_KEYBOARD_LL, _hookProc, moduleHandle, 0);
             var hookStarted = _hookHandle != IntPtr.Zero;
             return hookStarted;
@@ -28,7 +30,10 @@ namespace Wlx2Explorer.Hooks
 
         public bool Stop()
         {
-            if (_hookHandle == IntPtr.Zero) return true;
+            if (_hookHandle == IntPtr.Zero)
+            {
+                return true;
+            }
             var hookStoped = NativeMethods.UnhookWindowsHookEx(_hookHandle);
             return hookStoped;
         }
@@ -57,10 +62,7 @@ namespace Wlx2Explorer.Hooks
                     if (key1 && key2 && lParam.vkCode == _key3)
                     {
                         var handler = Hooked;
-                        if (handler != null)
-                        {
-                            handler.BeginInvoke(this, EventArgs.Empty, null, null);
-                        }
+                        handler?.BeginInvoke(this, EventArgs.Empty, null, null);
                     }
                 }
             }
